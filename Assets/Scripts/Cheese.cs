@@ -1,7 +1,10 @@
 using UnityEngine;
+using MoreMountains;
+using MoreMountains.Feedbacks;
 
 public class Cheese : MonoBehaviour
 {
+    public Sprite CheeseEaten;
     private Mouse player;
 
     private void Awake()
@@ -12,6 +15,9 @@ public class Cheese : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         player.PauseInput();
+        transform.localScale = new Vector3(0.5f, 0.5f, 1);
+        gameObject.GetComponent<SpriteRenderer>().sprite = CheeseEaten;
+        GetComponent<MMF_Player>().PlayFeedbacks();
         CrossfadeController.Instance.Fade();
     }
 }
