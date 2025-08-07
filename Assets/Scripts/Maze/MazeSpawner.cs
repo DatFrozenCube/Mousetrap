@@ -16,25 +16,47 @@ public class MazeSpawner : MonoBehaviour
     public GameObject Pillar;
     public GameObject Goal;
     public GameObject Trap;
-    public int Rows = 5;
-    public int Columns = 5;
-    public float CellWidth = 4;
-    public float CellHeight = 4;
+    public int Rows = 4;
+    public int Columns = 4;
+    public float CellWidth = 3;
+    public float CellHeight = 3;
     public bool AddGaps = false;
     public bool AddTraps = true;
+    public int Traps = 2;
     public float XOffset = 0;
     public float YOffset = 0;
 
     private BasicMazeGenerator mMazeGenerator;
+    private int TrapCounter = 0;
+    private Transform player;
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        LevelController.LevelActions += IncrementLevel;
         LevelController.LevelActions += GenerateLevel;
         GenerateLevel();
     }
 
+    private void IncrementLevel()
+    {
+        if (LevelController.LevelNumber % 2 == 0)
+        {
+            Traps = 2 * LevelController.LevelNumber;
+        }
+
+        if (LevelController.LevelNumber % 3 == 0)
+        {
+            Rows++;
+            Columns++;
+        }
+    }
+
     public void GenerateLevel()
     {
+        TrapCounter = 0;
+
         if (!FullRandom)
         {
             Random.InitState(RandomSeed);
@@ -84,12 +106,41 @@ public class MazeSpawner : MonoBehaviour
                 }
                 if (AddTraps)
                 {
-                    if (cell.IsTrap && Trap != null)
+                    if (cell.IsTrap && Trap != null && TrapCounter < Traps)
                     {
-                        float trapOffsetY = Random.Range(-CellHeight / 2, CellHeight / 2);
-                        float trapOffsetX = Random.Range(-CellWidth / 2, CellWidth / 2);
-                        tmp = Instantiate(Trap, new Vector3(x + trapOffsetX, y + trapOffsetY, 0), Quaternion.identity) as GameObject;
-                        tmp.transform.parent = transform;
+                        //Makes it so that a trap cannot be in the direct center of the cell
+                        float trapOffsetY;
+                        float trapOffsetX;
+                        if (Random.Range(0, 2) == 1)
+                        {
+                            trapOffsetY = Random.Range(-CellHeight / 2, -CellHeight / 4);
+                        }
+
+                        else
+                        {
+                            trapOffsetY = Random.Range(CellHeight / 4, CellHeight / 2);
+                        }
+
+                        if (Random.Range(0, 2) == 1)
+                        {
+                            trapOffsetX = Random.Range(-CellWidth / 2, -CellWidth / 4);
+                        }
+
+                        else
+                        {
+                            trapOffsetX = Random.Range(CellWidth / 4, CellWidth / 2);
+                        }
+
+                        Vector3 trapPosition = new Vector3(x + trapOffsetX, y + trapOffsetY, 0);
+                        float distanceToPlayer = Vector3.Distance(player.position, trapPosition);
+
+                        //Prevents traps from spawning on top of the player
+                        if (distanceToPlayer > player.GetComponent<Mouse>().PlayerRadiusFromTrap)
+                        {
+                            tmp = Instantiate(Trap, trapPosition, Quaternion.identity) as GameObject;
+                            tmp.transform.parent = transform;
+                            TrapCounter++;
+                        }
                     }
                 }
             }

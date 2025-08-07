@@ -230,14 +230,15 @@ MonoBehaviour:
   Pillar: {fileID: 2215180455571073617, guid: 7e68f0945cc8b224d8fb262b575e25d4, type: 3}
   Goal: {fileID: 1249152402451895494, guid: 7ac9cc4eb2af2a94fa69206e29f6614f, type: 3}
   Trap: {fileID: 18796222054151579, guid: 812b0cf2a26b1b540b2ec0e7d658f6ed, type: 3}
-  Rows: 8
-  Columns: 8
+  Rows: 4
+  Columns: 4
   CellWidth: 3
   CellHeight: 3
   AddGaps: 0
-  AddTraps: 0
-  XOffset: -2
-  YOffset: -2
+  AddTraps: 1
+  Traps: 2
+  XOffset: 0
+  YOffset: 0
 --- !u!4 &163052470
 Transform:
   m_ObjectHideFlags: 0
@@ -1062,7 +1063,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.17924517, g: 0.65397614, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1232,7 +1233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d433ced026cb1334cb454e56a442c7dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 10
 --- !u!61 &1018836598
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -4,10 +4,13 @@ using UnityEngine.InputSystem;
 
 public class Mouse : MonoBehaviour
 {
+    public float PlayerRadiusFromTrap = 2;
+
     private Rigidbody2D rb;
     private PlayerInput playerInput;
     private InputSystem_Actions inputActions;
     private bool isInputPaused;
+    private MazeSpawner spawner;
 
     [SerializeField] private float moveSpeed = 5f;
 
@@ -15,12 +18,12 @@ public class Mouse : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
+        spawner = GameObject.FindGameObjectWithTag("Creator").GetComponent<MazeSpawner>();
 
         inputActions = new InputSystem_Actions();
         inputActions.Player.Enable();
         PauseInput();
-
-        LevelController.LevelActions += PauseInput;
+        ResetPlayerPosition();
     }
 
     private void FixedUpdate()
@@ -39,9 +42,14 @@ public class Mouse : MonoBehaviour
         }
     }
 
-    private void PauseInput()
+    public void PauseInput()
     {
         StartCoroutine(PausePlayerInput(1));
+    }
+
+    public void ResetPlayerPosition()
+    {
+        transform.position = new Vector3((spawner.Rows * spawner.CellWidth) / 2, (spawner.Columns * spawner.CellHeight) / 2, 0);
     }
 
     private IEnumerator PausePlayerInput(int seconds)
@@ -49,5 +57,10 @@ public class Mouse : MonoBehaviour
         isInputPaused = true;
         yield return new WaitForSeconds(seconds);
         isInputPaused = false;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, PlayerRadiusFromTrap);
     }
 }
