@@ -25,7 +25,7 @@ public class CrossfadeController : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
         LevelController.LevelNumber++;
         LevelController.DestroyLevel();
-        player.ResetPlayerPosition();
+        //player.ResetPlayerPosition();
         LevelController.LevelActions.Invoke();
         transition.SetTrigger("End");
     }

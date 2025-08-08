@@ -239,6 +239,7 @@ MonoBehaviour:
   Traps: 2
   XOffset: 0
   YOffset: 0
+  LevelProgressionRate: 2
 --- !u!4 &163052470
 Transform:
   m_ObjectHideFlags: 0
@@ -639,7 +640,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 563909431}
-  - component: {fileID: 563909432}
   m_Layer: 0
   m_Name: MapCreator
   m_TagString: Creator
@@ -662,18 +662,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &563909432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 563909430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49def9f8593d14f43a4e9edcd539e8b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1233,7 +1221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d433ced026cb1334cb454e56a442c7dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerRadiusFromTrap: 2
+  TrapDetectionRadius: 2
+  GoalDetectionRadius: 6
   moveSpeed: 10
 --- !u!61 &1018836598
 BoxCollider2D:
@@ -1338,7 +1327,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Level: '
+  m_text: 'Experiment Number: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e9e4d9b03e358b84b95d4c7d6c408359, type: 2}
   m_sharedMaterial: {fileID: 4958173234044962035, guid: e9e4d9b03e358b84b95d4c7d6c408359, type: 2}
@@ -1403,7 +1392,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -52.861633, w: 0}
+  m_margin: {x: 0, y: 0, z: -395.62256, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2188,7 +2177,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -668, y: 465}
+  m_AnchoredPosition: {x: -305.5, y: 465}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2033299660

@@ -25,6 +25,7 @@ public class MazeSpawner : MonoBehaviour
     public int Traps = 2;
     public float XOffset = 0;
     public float YOffset = 0;
+    public int LevelProgressionRate = 2;
 
     private BasicMazeGenerator mMazeGenerator;
     private int TrapCounter = 0;
@@ -46,10 +47,10 @@ public class MazeSpawner : MonoBehaviour
             Traps = 2 * LevelController.LevelNumber;
         }
 
-        if (LevelController.LevelNumber % 3 == 0)
+        if (LevelController.LevelNumber % 2 == 0)
         {
-            Rows++;
-            Columns++;
+            Rows += LevelProgressionRate;
+            Columns += LevelProgressionRate;
         }
     }
 
@@ -104,9 +105,13 @@ public class MazeSpawner : MonoBehaviour
                     tmp = Instantiate(Goal, new Vector3(x, y, 0), Quaternion.identity) as GameObject;
                     tmp.transform.parent = transform;
                 }
+                if (cell.IsStart)
+                {
+                    player.position = new Vector3(x, y, 0);
+                }
                 if (AddTraps)
                 {
-                    if (cell.IsTrap && Trap != null && TrapCounter < Traps)
+                    if (cell.IsTrap && Trap != null && TrapCounter < Traps && Random.Range(0, 3) == 1)
                     {
                         //Makes it so that a trap cannot be in the direct center of the cell
                         float trapOffsetY;
@@ -135,7 +140,7 @@ public class MazeSpawner : MonoBehaviour
                         float distanceToPlayer = Vector3.Distance(player.position, trapPosition);
 
                         //Prevents traps from spawning on top of the player
-                        if (distanceToPlayer > player.GetComponent<Mouse>().PlayerRadiusFromTrap)
+                        if (distanceToPlayer > player.GetComponent<Mouse>().TrapDetectionRadius)
                         {
                             tmp = Instantiate(Trap, trapPosition, Quaternion.identity) as GameObject;
                             tmp.transform.parent = transform;
@@ -158,6 +163,26 @@ public class MazeSpawner : MonoBehaviour
                     tmp.transform.parent = transform;
                 }
             }
+        }
+
+        //Detect if goal is too close to player
+        Mouse mouse = player.gameObject.GetComponent<Mouse>();
+        bool resetPosition = false;
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(player.position, mouse.GoalDetectionRadius);
+
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.gameObject.CompareTag("Cheese"))
+            {
+                resetPosition = true;
+            }
+        }
+
+        if (resetPosition)
+        {
+            mouse.ResetPlayerPosition();
+            Debug.Log("Player too close to goal; moving");
         }
     }
 }

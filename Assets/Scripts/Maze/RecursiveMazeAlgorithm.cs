@@ -20,6 +20,11 @@ public class RecursiveMazeAlgorithm : BasicMazeGenerator
         Direction[] movesAvailable = new Direction[4];
         int movesAvailableCount = 0;
 
+        if (moveMade == Direction.Start)
+        {
+            GetMazeCell(row, column).IsStart = true;
+        }
+
         if (Random.Range(0, 2) == 1)
         {
             GetMazeCell(row, column).IsTrap = true;

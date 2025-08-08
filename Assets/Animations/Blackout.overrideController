@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Blackout
+  m_Controller: {fileID: 9100000, guid: fa621f8ec49c5ca4d9c63747190c2bc5, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 69488cae7632a68419cbf958b7ea219a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: dee5ef5100fcac74ea60f2d6bf2f8fd7, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 36410886b5c1c4a46a3efa1e032729d6, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b32ac8f554168a546bb6192124fb5296, type: 2}

@@ -4,7 +4,9 @@ using UnityEngine.InputSystem;
 
 public class Mouse : MonoBehaviour
 {
-    public float PlayerRadiusFromTrap = 2;
+    public float TrapDetectionRadius = 2f;
+    public float GoalDetectionRadius = 4f;
+    //Used to detect if there are any traps or goals nearby
 
     private Rigidbody2D rb;
     private PlayerInput playerInput;
@@ -23,7 +25,7 @@ public class Mouse : MonoBehaviour
         inputActions = new InputSystem_Actions();
         inputActions.Player.Enable();
         PauseInput();
-        ResetPlayerPosition();
+        //ResetPlayerPosition();
     }
 
     private void FixedUpdate()
@@ -61,6 +63,10 @@ public class Mouse : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(transform.position, PlayerRadiusFromTrap);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, GoalDetectionRadius);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, TrapDetectionRadius);
     }
 }
