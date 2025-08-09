@@ -1,4 +1,5 @@
 using System.Collections;
+using MoreMountains.Tools;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,19 +14,25 @@ public class Mouse : MonoBehaviour
     private InputSystem_Actions inputActions;
     private bool isInputPaused;
     private MazeSpawner spawner;
+    private Animator animator;
 
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private AudioClip squeezeSfx;
+    [SerializeField] private float moveSpeed = 10f;
+    [SerializeField] private int squeezeTime = 3;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
         spawner = GameObject.FindGameObjectWithTag("Creator").GetComponent<MazeSpawner>();
+        animator = GetComponentInChildren<Animator>();
 
         inputActions = new InputSystem_Actions();
         inputActions.Player.Enable();
+        inputActions.Player.Squeeze.performed += OnSqueeze;
+        inputActions.Player.Squeeze.canceled += OnSqueeze;
+
         PauseInput();
-        //ResetPlayerPosition();
     }
 
     private void FixedUpdate()
@@ -41,6 +48,25 @@ public class Mouse : MonoBehaviour
         {
             rb.linearVelocityX = 0;
             rb.linearVelocityY = 0;
+            animator.SetBool("Shrink", false);
+        }
+    }
+
+    private void OnSqueeze(InputAction.CallbackContext context)
+    {
+        if (!isInputPaused)
+        {
+            if (context.performed)
+            {
+                StartCoroutine(StartSqueeze(squeezeTime));
+            }
+
+            else if (context.canceled)
+            {
+                StopCoroutine(StartSqueeze(squeezeTime));
+                animator.SetBool("Shrink", false);
+                MMSoundManagerSoundControlEvent.Trigger(MMSoundManagerSoundControlEventTypes.Stop, 5);
+            }
         }
     }
 
@@ -59,6 +85,15 @@ public class Mouse : MonoBehaviour
         isInputPaused = true;
         yield return new WaitForSeconds(seconds);
         isInputPaused = false;
+    }
+
+    private IEnumerator StartSqueeze(int seconds)
+    {
+        animator.SetBool("Shrink", true);
+        MMSoundManagerSoundPlayEvent.Trigger(squeezeSfx, MMSoundManager.MMSoundManagerTracks.Sfx, transform.position, ID: 5);
+        yield return new WaitForSeconds(seconds);
+        animator.SetBool("Shrink", false);
+        MMSoundManagerSoundControlEvent.Trigger(MMSoundManagerSoundControlEventTypes.Stop, 5);
     }
 
     private void OnDrawGizmosSelected()

@@ -11,7 +11,7 @@ public class Trap : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" || collision.transform.parent.gameObject.CompareTag("Player"))
         {
             controller.GameOver();
         }
