@@ -16,9 +16,10 @@ public class Cheese : MonoBehaviour
     {
         player.PauseInput();
         transform.localScale = new Vector3(0.5f, 0.5f, 1);
-        gameObject.GetComponent<SpriteRenderer>().sprite = CheeseEaten;
+        GetComponent<SpriteRenderer>().sprite = CheeseEaten;
+        GetComponent<Collider2D>().enabled = false;
         GetComponent<MMF_Player>().PlayFeedbacks();
-        CrossfadeController.Instance.Fade();
+        CrossfadeController.Instance.Fade(true);
     }
 }
 

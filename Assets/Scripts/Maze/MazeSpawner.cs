@@ -22,6 +22,7 @@ public class MazeSpawner : MonoBehaviour
     public float CellHeight = 3;
     public bool AddGaps = false;
     public bool AddTraps = true;
+    public bool AddPlayer = true;
     public int Traps = 2;
     public float XOffset = 0;
     public float YOffset = 0;
@@ -33,7 +34,10 @@ public class MazeSpawner : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (AddPlayer)
+        {
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+        }
 
         LevelController.LevelActions += IncrementLevel;
         LevelController.LevelActions += GenerateLevel;
@@ -107,7 +111,10 @@ public class MazeSpawner : MonoBehaviour
                 }
                 if (cell.IsStart)
                 {
-                    player.position = new Vector3(x, y, 0);
+                    if (player != null && AddPlayer)
+                    {
+                        player.position = new Vector3(x, y, 0);
+                    }
                 }
                 if (AddTraps)
                 {
@@ -123,7 +130,7 @@ public class MazeSpawner : MonoBehaviour
 
                         else
                         {
-                            trapOffsetY = Random.Range(CellHeight / 4, CellHeight / 2);
+                            trapOffsetY = Random.Range(CellHeight / 3, CellHeight / 2);
                         }
 
                         if (Random.Range(0, 2) == 1)
@@ -133,7 +140,7 @@ public class MazeSpawner : MonoBehaviour
 
                         else
                         {
-                            trapOffsetX = Random.Range(CellWidth / 4, CellWidth / 2);
+                            trapOffsetX = Random.Range(CellWidth / 3, CellWidth / 2);
                         }
 
                         Vector3 trapPosition = new Vector3(x + trapOffsetX, y + trapOffsetY, 0);
@@ -166,23 +173,26 @@ public class MazeSpawner : MonoBehaviour
         }
 
         //Detect if goal is too close to player
-        Mouse mouse = player.gameObject.GetComponent<Mouse>();
-        bool resetPosition = false;
-
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(player.position, mouse.GoalDetectionRadius);
-
-        foreach (Collider2D collider in colliders)
+        if (player != null && AddPlayer)
         {
-            if (collider.gameObject.CompareTag("Cheese"))
+            Mouse mouse = player.gameObject.GetComponent<Mouse>();
+            bool resetPosition = false;
+
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(player.position, mouse.GoalDetectionRadius);
+
+            foreach (Collider2D collider in colliders)
             {
-                resetPosition = true;
+                if (collider.gameObject.CompareTag("Cheese"))
+                {
+                    resetPosition = true;
+                }
             }
-        }
 
-        if (resetPosition)
-        {
-            mouse.ResetPlayerPosition();
-            Debug.Log("Player too close to goal; moving");
+            if (resetPosition)
+            {
+                mouse.ResetPlayerPosition();
+                Debug.Log("Player too close to goal; moving");
+            }
         }
     }
 }
