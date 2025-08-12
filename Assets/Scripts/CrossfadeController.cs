@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,29 +11,48 @@ public class CrossfadeController : MonoBehaviour
     [SerializeField] private LevelUIUpdater uiUpdater;
     private Mouse player;
 
+    public enum FadeType
+    {
+        Level, Scene
+    };
+
     private void Awake()
     {
         Instance = this;
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Mouse>();
+        if (GameObject.FindGameObjectWithTag("Player"))
+        {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Mouse>();
+        }
     }
 
-    public void Fade(bool isNextLevel)
+    public void Fade(FadeType fadeType)
     {
-        if (isNextLevel)
+        if (fadeType == FadeType.Level)
         {
-            StartCoroutine(NextLevel());
+            bool includeText;
+            if (LevelController.LevelNumber > 0)
+            {
+                includeText = true;
+            }
+
+            else
+            {
+                includeText = false;
+            }
+
+            StartCoroutine(NextLevel(includeText));
         }
 
-        else
+        else if (fadeType == FadeType.Scene)
         {
-            StartCoroutine(FadeTrigger());
+            StartCoroutine(FadeScene());
         }
     }
     
-    IEnumerator NextLevel()
+    IEnumerator NextLevel(bool includeText)
     {
         LevelController.LevelNumber++;
-        uiUpdater.UpdateUI();
+        uiUpdater.UpdateUI(includeText);
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
         LevelController.DestroyLevel();
@@ -40,7 +60,7 @@ public class CrossfadeController : MonoBehaviour
         transition.SetTrigger("End");
     }
 
-    IEnumerator FadeTrigger()
+    IEnumerator FadeScene()
     {
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);

@@ -1,10 +1,21 @@
 using UnityEngine;
 using TMPro;
+using UnityEditor.SceneManagement;
 
 public class LevelUIUpdater : MonoBehaviour
 {
-    public void UpdateUI()
+    public void UpdateUI(bool includeText)
     {
-        GetComponent<TMP_Text>().text = LevelController.LevelNumber.ToString();
+        if (includeText)
+        {
+            TMP_Text text = GetComponent<TMP_Text>();
+            text.text = $"Experiment #{LevelController.LevelNumber.ToString()}";
+        }
+
+        else
+        {
+            TMP_Text text = GetComponent<TMP_Text>();
+            text.text = "";
+        }
     }
 }

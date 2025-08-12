@@ -19,7 +19,7 @@ public class Cheese : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = CheeseEaten;
         GetComponent<Collider2D>().enabled = false;
         GetComponent<MMF_Player>().PlayFeedbacks();
-        CrossfadeController.Instance.Fade(true);
+        CrossfadeController.Instance.Fade(CrossfadeController.FadeType.Level);
     }
 }
 

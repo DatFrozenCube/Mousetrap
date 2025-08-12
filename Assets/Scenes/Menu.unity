@@ -605,6 +605,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1418250869391164948, guid: fc4ff0e9704fa9a4983e23528889c303, type: 3}
+      propertyPath: uiUpdater
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4375221705057866086, guid: fc4ff0e9704fa9a4983e23528889c303, type: 3}
       propertyPath: m_Name
       value: CrossfadeController

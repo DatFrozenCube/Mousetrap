@@ -5,7 +5,7 @@ public class ButtonController : MonoBehaviour
 {
     public void StartGame()
     {
-        CrossfadeController.Instance.Fade(false);
+        CrossfadeController.Instance.Fade(CrossfadeController.FadeType.Scene);
     }
 
     public void ExitGame()
