@@ -11,6 +11,8 @@ TagManager:
   - GameOver
   - GameManager
   - Wall
+  - Button
+  - Menu
   layers:
   - Default
   - TransparentFX

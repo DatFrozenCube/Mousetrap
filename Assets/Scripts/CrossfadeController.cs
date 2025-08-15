@@ -27,25 +27,26 @@ public class CrossfadeController : MonoBehaviour
 
     public void Fade(FadeType fadeType)
     {
-        if (fadeType == FadeType.Level)
+        switch (fadeType)
         {
-            bool includeText;
-            if (LevelController.LevelNumber > 0)
-            {
-                includeText = true;
-            }
+            case FadeType.Level:
+                bool includeText;
+                if (LevelController.LevelNumber > 0)
+                {
+                    includeText = true;
+                }
 
-            else
-            {
-                includeText = false;
-            }
+                else
+                {
+                    includeText = false;
+                }
 
-            StartCoroutine(NextLevel(includeText));
-        }
+                StartCoroutine(NextLevel(includeText));
+                break;
 
-        else if (fadeType == FadeType.Scene)
-        {
-            StartCoroutine(FadeScene());
+            case FadeType.Scene:
+                StartCoroutine(FadeScene());
+                break;
         }
     }
     

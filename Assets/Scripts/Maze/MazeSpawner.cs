@@ -44,6 +44,12 @@ public class MazeSpawner : MonoBehaviour
         GenerateLevel();
     }
 
+    private void OnDestroy()
+    {
+        LevelController.LevelActions -= IncrementLevel;
+        LevelController.LevelActions -= GenerateLevel;
+    }
+
     private void IncrementLevel()
     {
         if (LevelController.LevelNumber % 2 == 0)
