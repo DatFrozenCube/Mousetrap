@@ -6,9 +6,10 @@ using Unity.VisualScripting;
 
 public class MenuFader : MonoBehaviour
 {
-    [SerializeField] private float fadeDuration = 2f;
+    public float fadeDuration = 2f;
     private CanvasGroup canvasGroup;
-    private void Start()
+
+    private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
     }
@@ -41,14 +42,6 @@ public class MenuFader : MonoBehaviour
         }
 
         canvasGroup.alpha = end;
-        LeanButton[] buttons = GetComponentsInChildren<LeanButton>();
-        foreach (LeanButton button in buttons)
-        {
-            if (button.CompareTag("Button"))
-            {
-                button.gameObject.SetActive(false);
-            }
-        }
     }
 
     IEnumerator FadeOut()
@@ -65,13 +58,5 @@ public class MenuFader : MonoBehaviour
         }
 
         canvasGroup.alpha = end;
-        LeanButton[] buttons = GetComponentsInChildren<LeanButton>();
-        foreach (LeanButton button in buttons)
-        {
-            if (button.CompareTag("Button"))
-            {
-                button.gameObject.SetActive(false);
-            }
-        }
     }
 }

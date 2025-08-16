@@ -13,6 +13,7 @@ TagManager:
   - Wall
   - Button
   - Menu
+  - Title
   layers:
   - Default
   - TransparentFX

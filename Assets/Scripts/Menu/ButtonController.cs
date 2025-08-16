@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class ButtonController : MonoBehaviour
 {
-    [SerializeField] private GameObject settingsWindow;
     public void StartGame()
     {
         CrossfadeController.Instance.Fade(CrossfadeController.FadeType.Scene);
@@ -12,18 +12,16 @@ public class ButtonController : MonoBehaviour
 
     public void Settings()
     {
-        StartCoroutine(OpenSettings());
+        TitleStart.Instance.UpdateMenu(true);
+    }
+
+    public void Back()
+    {
+        TitleStart.Instance.UpdateMenu(false);
     }
 
     public void ExitGame()
     {
         Application.Quit();
-    }
-
-    IEnumerator OpenSettings()
-    {
-        transform.parent.gameObject.GetComponent<MenuFader>().FadeMenu(false);
-        yield return new WaitForSeconds(.2f);
-        settingsWindow.GetComponent<MenuFader>().FadeMenu(true);
     }
 }
