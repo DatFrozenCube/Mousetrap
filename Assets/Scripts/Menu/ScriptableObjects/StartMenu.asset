@@ -16,3 +16,4 @@ MonoBehaviour:
   orderedPrefabs:
   - {fileID: 3579870491936471443, guid: 3d7c7db59c820b44eaf3386ecb5920f6, type: 3}
   - {fileID: 8975497107664563869, guid: d5626b909b052d247be1b8b4fc1b6085, type: 3}
+  - {fileID: 8975497107664563869, guid: 190f37b1fb913744b9237e2a9312c388, type: 3}
