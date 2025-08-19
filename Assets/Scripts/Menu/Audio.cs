@@ -25,35 +25,39 @@ public class Audio : MonoBehaviour
         masterText = masterIndicator.GetComponent<TMP_Text>();
         sfxText = sfxIndicator.GetComponent<TMP_Text>();
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<MMSoundManager>();
-        isMasterOn = soundManager.settingsSo.Settings.MasterOn;
-        isSfxOn = soundManager.settingsSo.Settings.SfxOn;
+        isMasterOn = !soundManager.IsMuted(MMSoundManager.MMSoundManagerTracks.Master);
+        isSfxOn = !soundManager.IsMuted(MMSoundManager.MMSoundManagerTracks.Sfx);
+        CheckMaster();
+        CheckSfx();
+    }
 
-        if (isMasterOn)
+    public void CheckMaster()
+    {
+        if (!isMasterOn)
         {
-            masterText.color = new Color32(88, 255, 17, 255);
-            masterText.text = "On";
-            isMasterOn = false;
+            masterText.color = new Color32(244, 25, 0, 255);
+            masterText.text = "Off";
         }
 
         else
         {
-            masterText.color = new Color32(244, 25, 0, 255);
-            masterText.text = "Off";
-            isMasterOn = true;
-        }
-
-        if (isSfxOn)
-        {
             masterText.color = new Color32(88, 255, 17, 255);
             masterText.text = "On";
-            isSfxOn = false;
+        }
+    }
+
+    public void CheckSfx()
+    {
+        if (!isSfxOn)
+        {
+            sfxText.color = new Color32(244, 25, 0, 255);
+            sfxText.text = "Off";
         }
 
         else
         {
-            masterText.color = new Color32(244, 25, 0, 255);
-            masterText.text = "Off";
-            isSfxOn = true;
+            sfxText.color = new Color32(88, 255, 17, 255);
+            sfxText.text = "On";
         }
     }
 
@@ -61,20 +65,18 @@ public class Audio : MonoBehaviour
     {
         if (isMasterOn)
         {
-            masterText.color = new Color32(244, 25, 0, 255);
-            masterText.text = "Off";
-            soundManager.settingsSo.Settings.MasterOn = false;
+            soundManager.MuteMaster();
             soundManager.SaveSettings();
             isMasterOn = false;
+            CheckMaster();
         }
 
         else
         {
-            masterText.color = new Color32(88, 255, 17, 255);
-            masterText.text = "On";
-            soundManager.settingsSo.Settings.MasterOn = true;
+            soundManager.UnmuteMaster();
             soundManager.SaveSettings();
             isMasterOn = true;
+            CheckMaster();
         }
     }
 
@@ -82,20 +84,18 @@ public class Audio : MonoBehaviour
     {
         if (isSfxOn)
         {
-            sfxText.color = new Color32(244, 25, 0, 255);
-            sfxText.text = "Off";
-            soundManager.settingsSo.Settings.SfxOn = false;
+            soundManager.MuteSfx();
             soundManager.SaveSettings();
             isSfxOn = false;
+            CheckSfx();
         }
 
         else
         {
-            sfxText.color = new Color32(88, 255, 17, 255);
-            sfxText.text = "On";
-            soundManager.settingsSo.Settings.SfxOn = true;
+            soundManager.UnmuteSfx();
             soundManager.SaveSettings();
             isSfxOn = true;
+            CheckSfx();
         }
     }
 }

@@ -496,6 +496,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Menu: {fileID: 11400000, guid: 3950d446dfb5cf148b7e5c076169af29, type: 2}
+  sampleMusic: {fileID: 8300000, guid: 4a74f61bf7075e8439f9a759ece2693f, type: 3}
+  sampleSfx: {fileID: 8300000, guid: 120d834796037bf43802cdec7efa7096, type: 3}
 --- !u!1 &750871491
 GameObject:
   m_ObjectHideFlags: 0
