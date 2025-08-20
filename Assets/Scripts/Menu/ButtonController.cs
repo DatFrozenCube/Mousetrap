@@ -17,23 +17,32 @@ public class ButtonController : MonoBehaviour
     {
         if (track.ToLower() == "master")
         {
-            Audio.Instance.ToggleMaster();
+            AudioSettings.Instance.ToggleMaster();
         }
 
         else if (track.ToLower() == "sfx")
         {
-            Audio.Instance.ToggleSFX();
+            AudioSettings.Instance.ToggleSFX();
         }
+
+        else if (track.ToLower() == "music")
+        {
+            AudioSettings.Instance.ToggleMusic();
+        }
+
+            Audio.Instance.ButtonClick();
     }
 
     public void Next()
     {
         TitleStart.Instance.UpdateMenu(true);
+        Audio.Instance.ButtonClick();
     }
 
     public void Back()
     {
         TitleStart.Instance.UpdateMenu(false);
+        Audio.Instance.ButtonClick();
     }
 
     public void ExitGame()

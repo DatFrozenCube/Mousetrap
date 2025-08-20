@@ -29,10 +29,10 @@ MonoBehaviour:
     MutedMasterVolume: 0
     MusicVolume: 1
     MusicOn: 1
-    MutedMusicVolume: 0
+    MutedMusicVolume: -80
     SfxVolume: 1
     SfxOn: 1
-    MutedSfxVolume: -80
+    MutedSfxVolume: 0
     UIVolume: 1
     UIOn: 1
     MutedUIVolume: 0

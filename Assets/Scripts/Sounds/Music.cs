@@ -8,6 +8,6 @@ public class Music : MonoBehaviour
 
     private void Start()
     {
-        soundManager.PlaySound(backgroundMusic, loop: true, mmSoundManagerTrack: MMSoundManager.MMSoundManagerTracks.Music, volume: 0.5f, location: transform.parent.position);
+        soundManager.PlaySound(backgroundMusic, loop: true, mmSoundManagerTrack: MMSoundManager.MMSoundManagerTracks.Music, volume: 0.5f, location: Camera.main.transform.position);
     }
 }
