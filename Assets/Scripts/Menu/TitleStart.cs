@@ -7,8 +7,6 @@ public class TitleStart : MonoBehaviour
 {
     public Menu Menu;
     public static TitleStart Instance;
-    [SerializeField] private AudioClip sampleMusic;
-    [SerializeField] private AudioClip sampleSfx;
     private GameObject spawnedMenu;
     private MMSoundManager soundManager;
     private float transitionSpeed = .2f;
@@ -21,23 +19,6 @@ public class TitleStart : MonoBehaviour
         menuPrefab = Menu.orderedPrefabs[menuIndex];
         spawnedMenu = Instantiate(menuPrefab) as GameObject;
         spawnedMenu.GetComponent<MenuFader>().FadeMenu(true);
-    }
-
-    private void Awake()
-    {
-        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<MMSoundManager>();
-        Camera mainCamera = Camera.main;
-        MMSoundManagerPlayOptions musicOptions = MMSoundManagerPlayOptions.Default;
-        musicOptions.Loop = true;
-        musicOptions.MmSoundManagerTrack = MMSoundManager.MMSoundManagerTracks.Master;
-        musicOptions.Location = mainCamera.transform.position;
-        soundManager.PlaySound(sampleMusic, musicOptions);
-
-        MMSoundManagerPlayOptions sfxOptions = MMSoundManagerPlayOptions.Default;
-        musicOptions.Loop = false;
-        musicOptions.MmSoundManagerTrack = MMSoundManager.MMSoundManagerTracks.Sfx;
-        musicOptions.Location = mainCamera.transform.position;
-        soundManager.PlaySound(sampleMusic, musicOptions);
     }
 
     public void UpdateMenu(bool menuProgression)
