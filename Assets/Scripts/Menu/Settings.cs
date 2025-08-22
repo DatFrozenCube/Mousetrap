@@ -4,7 +4,5 @@ using UnityEngine;
 public class Settings : ScriptableObject
 {
     public string SettingsName;
-    public bool IsSoundEffects;
-    public bool IsMusic;
     public bool IsParticles;
 }

@@ -13,6 +13,12 @@ public class ButtonController : MonoBehaviour
         CrossfadeController.Instance.Fade(CrossfadeController.FadeType.Scene);
     }
 
+    public void ToggleParticleSystem()
+    {
+        BasicSettings.Instance.ToggleParticles();
+        Audio.Instance.ButtonClick();
+    }
+
     public void ToggleMute(string track)
     {
         if (track.ToLower() == "master")

@@ -1495,7 +1495,19 @@ MonoBehaviour:
       m_Calls: []
   onClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4510775323658482957}
+        m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
+        m_MethodName: ToggleParticleSystem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7355517998756601764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1633,6 +1645,7 @@ GameObject:
   - component: {fileID: 8634110611005122347}
   - component: {fileID: 2689755018886268359}
   - component: {fileID: 3645072882454352511}
+  - component: {fileID: 3399184355769809159}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Menu
@@ -1751,3 +1764,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeDuration: 0.2
+--- !u!114 &3399184355769809159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8975497107664563869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f88567f8b0dc7408e5b5f590d895ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsParticlesOn: 0
+  particlesIndicator: {fileID: 3639973921534091100}
+  settings: {fileID: 11400000, guid: 8a4539df49f6a834f8a27743777a3757, type: 2}
+  cheesePrefab: {fileID: -4349194122567650192, guid: 7ac9cc4eb2af2a94fa69206e29f6614f, type: 3}
