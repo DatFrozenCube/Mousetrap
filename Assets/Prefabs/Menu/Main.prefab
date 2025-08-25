@@ -152,8 +152,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4293455863
+  m_fontColor: {r: 0.96862745, g: 0.9372549, b: 0.9098039, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -734,8 +734,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4293455863
+  m_fontColor: {r: 0.96862745, g: 0.9372549, b: 0.9098039, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1039,8 +1039,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4293455863
+  m_fontColor: {r: 0.96862745, g: 0.9372549, b: 0.9098039, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1318,7 +1318,7 @@ MonoBehaviour:
   Data:
     Duration: 0.1
     Target: {fileID: 4315200173002077988}
-    Value: {r: 0, g: 0, b: 0, a: 1}
+    Value: {r: 0.96862745, g: 0.9372549, b: 0.9098039, a: 1}
     Ease: 100
 --- !u!114 &3729807775905977229
 MonoBehaviour:
@@ -1391,7 +1391,7 @@ MonoBehaviour:
   Data:
     Duration: 0.1
     Target: {fileID: 4601400241324107259}
-    Value: {r: 0, g: 0, b: 0, a: 1}
+    Value: {r: 0.96862745, g: 0.9372549, b: 0.9098039, a: 1}
     Ease: 100
 --- !u!114 &6828881539745272463
 MonoBehaviour:
@@ -1464,7 +1464,7 @@ MonoBehaviour:
   Data:
     Duration: 0.1
     Target: {fileID: 2027824229423951}
-    Value: {r: 0, g: 0, b: 0, a: 1}
+    Value: {r: 0.96862745, g: 0.9372549, b: 0.9098039, a: 1}
     Ease: 100
 --- !u!114 &762794255031733730
 MonoBehaviour:

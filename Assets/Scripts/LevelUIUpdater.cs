@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using UnityEditor.SceneManagement;
 
 public class LevelUIUpdater : MonoBehaviour
 {
