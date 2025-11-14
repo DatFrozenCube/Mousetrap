@@ -1,3 +1,4 @@
+using MoreMountains.Tools;
 using UnityEngine;
 
 public class TrapController : MonoBehaviour
@@ -12,6 +13,7 @@ public class TrapController : MonoBehaviour
     public void GameOver()
     {
         canvas.SetActive(true);
+        MMSoundManager.Instance.StopAllSounds();
         Time.timeScale = 0;
     }
 }

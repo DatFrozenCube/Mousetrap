@@ -10,6 +10,7 @@ public class ButtonController : MonoBehaviour
 {
     public void StartGame()
     {
+        Audio.Instance.ButtonClick();
         CrossfadeController.Instance.Fade(CrossfadeController.FadeType.Scene);
     }
 
