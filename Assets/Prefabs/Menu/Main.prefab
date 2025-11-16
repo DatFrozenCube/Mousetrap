@@ -71,7 +71,7 @@ MonoBehaviour:
   Data:
     Duration: 0.1
     Target: {fileID: 3313945339642339859}
-    Value: -569.4
+    Value: -295.74
     Ease: 100
 --- !u!1 &2321999537387208500
 GameObject:
@@ -112,7 +112,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -648.6465, y: -147}
+  m_AnchoredPosition: {x: -346, y: -137}
   m_SizeDelta: {x: 251.8071, y: 111.05}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5476107161998602343
@@ -170,8 +170,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90
-  m_fontSizeBase: 90
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -449,7 +449,7 @@ MonoBehaviour:
   Data:
     Duration: 0.1
     Target: {fileID: 9209806703164343136}
-    Value: -569.4
+    Value: -295.74
     Ease: 100
 --- !u!1 &3173246512692858810
 GameObject:
@@ -522,7 +522,7 @@ MonoBehaviour:
   Data:
     Duration: 0.1
     Target: {fileID: 7895018756204038782}
-    Value: -569.4
+    Value: -295.74
     Ease: 100
 --- !u!1 &3579870491936471443
 GameObject:
@@ -694,7 +694,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -648.6465, y: 214}
+  m_AnchoredPosition: {x: -346, y: 56}
   m_SizeDelta: {x: 251.8071, y: 111.05}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8296873998950861584
@@ -752,8 +752,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90
-  m_fontSizeBase: 90
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -999,7 +999,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -651.6504, y: 31}
+  m_AnchoredPosition: {x: -349, y: -38.9}
   m_SizeDelta: {x: 245.7994, y: 111.05}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &859697436158994830
@@ -1057,8 +1057,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90
-  m_fontSizeBase: 90
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1336,7 +1336,7 @@ MonoBehaviour:
   Data:
     Duration: 0.1
     Target: {fileID: 3313945339642339859}
-    Value: -653
+    Value: -346
     Ease: 100
 --- !u!1 &7917409519276342154
 GameObject:
@@ -1409,7 +1409,7 @@ MonoBehaviour:
   Data:
     Duration: 0.1
     Target: {fileID: 9209806703164343136}
-    Value: -653
+    Value: -346
     Ease: 100
 --- !u!1 &9049331719483028518
 GameObject:
@@ -1482,5 +1482,5 @@ MonoBehaviour:
   Data:
     Duration: 0.1
     Target: {fileID: 7895018756204038782}
-    Value: -653
+    Value: -346
     Ease: 100
