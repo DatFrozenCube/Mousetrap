@@ -30,7 +30,7 @@ public class Cheese : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         player.PauseInput();
-        transform.localScale = new Vector3(0.5f, 0.5f, 1);
+        //transform.localScale = new Vector3(0.5f, 0.5f, 1);
         GetComponent<SpriteRenderer>().sprite = CheeseEaten;
         GetComponent<Collider2D>().enabled = false;
 

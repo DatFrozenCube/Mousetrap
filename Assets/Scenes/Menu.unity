@@ -289,8 +289,9 @@ MonoBehaviour:
   RandomSeed: 12345
   Wall: {fileID: 4437028830712661863, guid: f1f80bfe5f367a3478a9775dc22c7e8d, type: 3}
   Pillar: {fileID: 2215180455571073617, guid: 7e68f0945cc8b224d8fb262b575e25d4, type: 3}
-  Goal: {fileID: 0}
-  Trap: {fileID: 0}
+  Goal: {fileID: 1249152402451895494, guid: 7ac9cc4eb2af2a94fa69206e29f6614f, type: 3}
+  Trap: {fileID: 18796222054151579, guid: 812b0cf2a26b1b540b2ec0e7d658f6ed, type: 3}
+  Floor: {fileID: 2215180455571073617, guid: e046d0a25e289f24fb2db3901b1d493d, type: 3}
   Rows: 30
   Columns: 30
   CellWidth: 3
@@ -627,7 +628,6 @@ MonoBehaviour:
   m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
-  m_Version: 2
   m_TaaSettings:
     m_Quality: 3
     m_FrameInfluence: 0.1
@@ -635,6 +635,7 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!114 &750871496
 MonoBehaviour:
   m_ObjectHideFlags: 0

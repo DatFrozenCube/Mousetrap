@@ -16,6 +16,7 @@ public class MazeSpawner : MonoBehaviour
     public GameObject Pillar;
     public GameObject Goal;
     public GameObject Trap;
+    public GameObject Floor;
     public int Rows = 4;
     public int Columns = 4;
     public float CellWidth = 3;
@@ -64,6 +65,12 @@ public class MazeSpawner : MonoBehaviour
         }
     }
 
+    private GameObject PlaceFloor(float x, float y)
+    {
+        GameObject tmp = Instantiate(Floor, new Vector3(x, y, 0), Quaternion.identity) as GameObject;
+        return tmp;
+    }
+
     public void GenerateLevel()
     {
         TrapCounter = 0;
@@ -89,29 +96,40 @@ public class MazeSpawner : MonoBehaviour
                 float y = (row + YOffset) * (CellHeight + (AddGaps ? .2f : 0));
                 MazeCell cell = mMazeGenerator.GetMazeCell(row, column);
                 GameObject tmp;
+                GameObject floor;
 
                 if (cell.WallRight)
                 {
-                    tmp = Instantiate(Wall, new Vector3(x + CellWidth / 2, y, 0) + Wall.transform.position, Quaternion.Euler(0, 0, 90)) as GameObject;// right
+                    floor = PlaceFloor(x, y);
+                    floor.transform.parent = transform;
+                    tmp = Instantiate(Wall, new Vector3(x + CellWidth / 2, y, 0) + Wall.transform.position, Quaternion.Euler(0, 0, 270)) as GameObject;// right
                     tmp.transform.parent = transform;
                 }
                 if (cell.WallFront)
                 {
+                    floor = PlaceFloor(x, y);
+                    floor.transform.parent = transform;
                     tmp = Instantiate(Wall, new Vector3(x, y + CellHeight / 2, 0) + Wall.transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;// front
                     tmp.transform.parent = transform;
                 }
                 if (cell.WallLeft)
                 {
-                    tmp = Instantiate(Wall, new Vector3(x - CellWidth / 2, y, 0) + Wall.transform.position, Quaternion.Euler(0, 0, 270)) as GameObject;// left
+                    floor = PlaceFloor(x, y);
+                    floor.transform.parent = transform;
+                    tmp = Instantiate(Wall, new Vector3(x - CellWidth / 2, y, 0) + Wall.transform.position, Quaternion.Euler(0, 0, 90)) as GameObject;// left
                     tmp.transform.parent = transform;
                 }
                 if (cell.WallBack)
                 {
+                    floor = PlaceFloor(x, y);
+                    floor.transform.parent = transform;
                     tmp = Instantiate(Wall, new Vector3(x, y - CellHeight / 2, 0) + Wall.transform.position, Quaternion.Euler(0, 0, 180)) as GameObject;// back
                     tmp.transform.parent = transform;
                 }
                 if (cell.IsGoal && Goal != null)
                 {
+                    floor = PlaceFloor(x, y);
+                    floor.transform.parent = transform;
                     tmp = Instantiate(Goal, new Vector3(x, y, 0), Quaternion.identity) as GameObject;
                     tmp.transform.parent = transform;
                 }
