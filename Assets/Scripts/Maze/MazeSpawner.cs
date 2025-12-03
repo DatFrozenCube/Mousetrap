@@ -1,6 +1,8 @@
-using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 using System.Data;
+using NUnit.Framework;
+using UnityEngine;
+using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class MazeSpawner : MonoBehaviour
 {
@@ -17,6 +19,7 @@ public class MazeSpawner : MonoBehaviour
     public GameObject Goal;
     public GameObject Trap;
     public GameObject Floor;
+    public GameObject Floorback;
     public int Rows = 4;
     public int Columns = 4;
     public float CellWidth = 3;
@@ -24,6 +27,7 @@ public class MazeSpawner : MonoBehaviour
     public bool AddGaps = false;
     public bool AddTraps = true;
     public bool AddPlayer = true;
+    public bool AddFloor = true;
     public int Traps = 2;
     public float XOffset = 0;
     public float YOffset = 0;
@@ -32,6 +36,8 @@ public class MazeSpawner : MonoBehaviour
     private BasicMazeGenerator mMazeGenerator;
     private int TrapCounter = 0;
     private Transform player;
+    private GameObject[] cornerPillars;
+    private GameObject middlePillar;
 
     private void Start()
     {
@@ -65,12 +71,6 @@ public class MazeSpawner : MonoBehaviour
         }
     }
 
-    private GameObject PlaceFloor(float x, float y)
-    {
-        GameObject tmp = Instantiate(Floor, new Vector3(x, y, 0), Quaternion.identity) as GameObject;
-        return tmp;
-    }
-
     public void GenerateLevel()
     {
         TrapCounter = 0;
@@ -96,40 +96,29 @@ public class MazeSpawner : MonoBehaviour
                 float y = (row + YOffset) * (CellHeight + (AddGaps ? .2f : 0));
                 MazeCell cell = mMazeGenerator.GetMazeCell(row, column);
                 GameObject tmp;
-                GameObject floor;
 
                 if (cell.WallRight)
                 {
-                    floor = PlaceFloor(x, y);
-                    floor.transform.parent = transform;
                     tmp = Instantiate(Wall, new Vector3(x + CellWidth / 2, y, 0) + Wall.transform.position, Quaternion.Euler(0, 0, 270)) as GameObject;// right
                     tmp.transform.parent = transform;
                 }
                 if (cell.WallFront)
                 {
-                    floor = PlaceFloor(x, y);
-                    floor.transform.parent = transform;
                     tmp = Instantiate(Wall, new Vector3(x, y + CellHeight / 2, 0) + Wall.transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;// front
                     tmp.transform.parent = transform;
                 }
                 if (cell.WallLeft)
                 {
-                    floor = PlaceFloor(x, y);
-                    floor.transform.parent = transform;
                     tmp = Instantiate(Wall, new Vector3(x - CellWidth / 2, y, 0) + Wall.transform.position, Quaternion.Euler(0, 0, 90)) as GameObject;// left
                     tmp.transform.parent = transform;
                 }
                 if (cell.WallBack)
                 {
-                    floor = PlaceFloor(x, y);
-                    floor.transform.parent = transform;
                     tmp = Instantiate(Wall, new Vector3(x, y - CellHeight / 2, 0) + Wall.transform.position, Quaternion.Euler(0, 0, 180)) as GameObject;// back
                     tmp.transform.parent = transform;
                 }
                 if (cell.IsGoal && Goal != null)
                 {
-                    floor = PlaceFloor(x, y);
-                    floor.transform.parent = transform;
                     tmp = Instantiate(Goal, new Vector3(x, y, 0), Quaternion.identity) as GameObject;
                     tmp.transform.parent = transform;
                 }
@@ -184,6 +173,8 @@ public class MazeSpawner : MonoBehaviour
 
         if (Pillar != null)
         {
+            int cornerCounter = 0;
+            cornerPillars = new GameObject[4];
             for (int row = 0; row < Rows + 1; row++)
             {
                 for (int column = 0; column < Columns + 1; column++)
@@ -192,8 +183,45 @@ public class MazeSpawner : MonoBehaviour
                     float y = (row + YOffset) * (CellHeight + (AddGaps ? .2f : 0));
                     GameObject tmp = Instantiate(Pillar, new Vector3(x - CellWidth / 2, y - CellHeight / 2, 0), Quaternion.identity) as GameObject;
                     tmp.transform.parent = transform;
+
+                    if (row == Rows || row == 0)
+                    {
+                        if (column == Columns || column == 0)
+                        {
+                            cornerPillars[cornerCounter] = tmp;
+                            cornerCounter++;
+                        }
+                    }
+
+                    if (row == Rows / 2 && column == Columns / 2)
+                    {
+                        middlePillar = tmp;
+                    }
                 }
             }
+        }
+
+        if (Floor != null)
+        {
+            for (int row = 0; row < Rows; row++)
+            {
+                for (int column = 0; column < Columns; column++)
+                {
+                    float x = (column + XOffset) * (CellWidth + (AddGaps ? .2f : 0));
+                    float y = (row + YOffset) * (CellHeight + (AddGaps ? .2f : 0));
+                    GameObject floor = Instantiate(Floor, new Vector3(x, y, 0), Quaternion.identity) as GameObject;
+                    floor.transform.parent = transform;
+                }
+            }
+        }
+
+        if (Floorback != null)
+        {
+            float squareLength = Vector3.Distance(cornerPillars[0].transform.position, cornerPillars[1].transform.position);
+            GameObject floorback = Instantiate(Floorback, new Vector3 (0, 0, 0), Quaternion.identity) as GameObject;
+            floorback.transform.localScale = new Vector3(squareLength, squareLength, 1);
+            floorback.transform.localPosition = middlePillar.transform.localPosition;
+            floorback.transform.parent = transform;
         }
 
         //Detect if goal is too close to player

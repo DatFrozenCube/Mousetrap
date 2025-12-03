@@ -13,7 +13,7 @@ public class Cheese : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Mouse>();
 
-        if (!BasicSettings.Instance.IsParticlesOn)
+        if (BasicSettings.Instance != null && !BasicSettings.Instance.IsParticlesOn)
         {
             GetComponent<MMF_Player>().GetFeedbackOfType<MMF_ParticlesInstantiation>();
         }

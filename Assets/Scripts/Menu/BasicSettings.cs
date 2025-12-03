@@ -13,12 +13,12 @@ public class BasicSettings : MonoBehaviour
     private void Start()
     {
         Instance = this;
+        IsParticlesOn = settings.IsParticles;
     }
 
     private void Awake()
     {
         particlesText = particlesIndicator.GetComponent<TMP_Text>();
-        IsParticlesOn = settings.IsParticles;
         CheckParticles();
     }
 

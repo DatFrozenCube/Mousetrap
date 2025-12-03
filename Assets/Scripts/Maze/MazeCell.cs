@@ -16,4 +16,5 @@ public class MazeCell
     public bool IsGoal = false;
     public bool IsTrap = false;
     public bool IsStart = false;
+    public bool IsFloorPlaced = false;
 }

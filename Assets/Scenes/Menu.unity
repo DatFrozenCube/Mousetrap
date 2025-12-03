@@ -292,6 +292,7 @@ MonoBehaviour:
   Goal: {fileID: 1249152402451895494, guid: 7ac9cc4eb2af2a94fa69206e29f6614f, type: 3}
   Trap: {fileID: 18796222054151579, guid: 812b0cf2a26b1b540b2ec0e7d658f6ed, type: 3}
   Floor: {fileID: 2215180455571073617, guid: e046d0a25e289f24fb2db3901b1d493d, type: 3}
+  Floorback: {fileID: 8930726695138734032, guid: fe42b03d272fe4445ad4abc658825e29, type: 3}
   Rows: 30
   Columns: 30
   CellWidth: 3
@@ -299,6 +300,7 @@ MonoBehaviour:
   AddGaps: 0
   AddTraps: 0
   AddPlayer: 0
+  AddFloor: 1
   Traps: 2
   XOffset: 0
   YOffset: 0
