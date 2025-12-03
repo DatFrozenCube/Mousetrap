@@ -53,6 +53,7 @@ MonoBehaviour:
   Trap: {fileID: 18796222054151579, guid: 812b0cf2a26b1b540b2ec0e7d658f6ed, type: 3}
   Floor: {fileID: 2215180455571073617, guid: e046d0a25e289f24fb2db3901b1d493d, type: 3}
   Floorback: {fileID: 8930726695138734032, guid: fe42b03d272fe4445ad4abc658825e29, type: 3}
+  Light: {fileID: 7854163714166785745, guid: cfc60ec70584e74449dc7f56516fecb6, type: 3}
   Rows: 4
   Columns: 4
   CellWidth: 3
@@ -61,7 +62,9 @@ MonoBehaviour:
   AddTraps: 1
   AddPlayer: 1
   AddFloor: 1
+  AddLights: 1
   Traps: 2
+  Lights: 3
   XOffset: 0
   YOffset: 0
   LevelProgressionRate: 2

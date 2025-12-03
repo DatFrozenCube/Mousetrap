@@ -20,6 +20,7 @@ public class MazeSpawner : MonoBehaviour
     public GameObject Trap;
     public GameObject Floor;
     public GameObject Floorback;
+    public GameObject Light;
     public int Rows = 4;
     public int Columns = 4;
     public float CellWidth = 3;
@@ -28,13 +29,16 @@ public class MazeSpawner : MonoBehaviour
     public bool AddTraps = true;
     public bool AddPlayer = true;
     public bool AddFloor = true;
+    public bool AddLights = true;
     public int Traps = 2;
+    public int Lights = 4;
     public float XOffset = 0;
     public float YOffset = 0;
     public int LevelProgressionRate = 2;
 
     private BasicMazeGenerator mMazeGenerator;
     private int TrapCounter = 0;
+    private int LightCounter = 0;
     private Transform player;
     private GameObject[] cornerPillars;
     private GameObject middlePillar;
@@ -61,11 +65,8 @@ public class MazeSpawner : MonoBehaviour
     {
         if (LevelController.LevelNumber % 2 == 0)
         {
-            Traps = 2 * LevelController.LevelNumber;
-        }
-
-        if (LevelController.LevelNumber % 2 == 0)
-        {
+            Traps *= LevelController.LevelNumber;
+            Lights *= LevelController.LevelNumber;
             Rows += LevelProgressionRate;
             Columns += LevelProgressionRate;
         }
@@ -181,7 +182,22 @@ public class MazeSpawner : MonoBehaviour
                 {
                     float x = (column + XOffset) * (CellWidth + (AddGaps ? .2f : 0));
                     float y = (row + YOffset) * (CellHeight + (AddGaps ? .2f : 0));
-                    GameObject tmp = Instantiate(Pillar, new Vector3(x - CellWidth / 2, y - CellHeight / 2, 0), Quaternion.identity) as GameObject;
+                    Vector3 pillarCoords = new Vector3(x - CellWidth / 2, y - CellHeight / 2, 0);
+                    GameObject tmp = Instantiate(Pillar, pillarCoords, Quaternion.identity) as GameObject;
+
+                    if (Light != null)
+                    {
+                        if (AddLights && LightCounter < Lights && Random.Range(0, 4) == 3)
+                        {
+                            if (column <= Columns - 1 && column >= 1 && row <= Rows - 1 && row >= 1)
+                            {
+                                GameObject light = Instantiate(Light, pillarCoords, Quaternion.identity) as GameObject;
+                                light.transform.parent = transform;
+                                LightCounter++;
+                            }
+                        }
+                    }
+
                     tmp.transform.parent = transform;
 
                     if (row == Rows || row == 0)
