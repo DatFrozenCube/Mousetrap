@@ -1,11 +1,14 @@
 using UnityEngine;
 using MoreMountains;
 using MoreMountains.Feedbacks;
+using System;
 
 public class Cheese : MonoBehaviour
 {
     public Sprite CheeseEaten;
+    public static Action CheeseActions;
     [SerializeField] private ParticleSystem cheeseParticles;
+    [SerializeField] private AudioClip cheeseScoreSound;
     private MMF_ParticlesInstantiation cheeseParticlesFeedback;
     private Mouse player;
 
@@ -29,10 +32,11 @@ public class Cheese : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        player.PauseInput();
-        //transform.localScale = new Vector3(0.5f, 0.5f, 1);
         GetComponent<SpriteRenderer>().sprite = CheeseEaten;
         GetComponent<Collider2D>().enabled = false;
+        PointsController.Instance.ScorePoints(100, cheeseScoreSound);
+
+        CheeseActions.Invoke();
 
         if (!BasicSettings.Instance.IsParticlesOn)
         {
@@ -48,7 +52,6 @@ public class Cheese : MonoBehaviour
         }
 
         GetComponent<MMF_Player>().PlayFeedbacks();
-        CrossfadeController.Instance.Fade(CrossfadeController.FadeType.Level);
     }
 }
 

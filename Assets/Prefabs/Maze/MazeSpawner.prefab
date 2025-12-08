@@ -56,15 +56,15 @@ MonoBehaviour:
   Light: {fileID: 7854163714166785745, guid: cfc60ec70584e74449dc7f56516fecb6, type: 3}
   Rows: 4
   Columns: 4
-  CellWidth: 3
-  CellHeight: 3
+  CellWidth: 5
+  CellHeight: 5
   AddGaps: 0
   AddTraps: 1
   AddPlayer: 1
   AddFloor: 1
   AddLights: 1
   Traps: 2
-  Lights: 3
+  Lights: 2
   XOffset: 0
   YOffset: 0
   LevelProgressionRate: 2

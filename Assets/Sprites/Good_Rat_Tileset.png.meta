@@ -338,6 +338,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Good_Rat_Tileset_10
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 17
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b400d260184366c47b2d7a0ec0eccdf6
+      internalID: -1070482879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -356,6 +378,7 @@ TextureImporter:
     nameFileIdTable:
       Good_Rat_Tileset_0: 3684756183184973723
       Good_Rat_Tileset_1: -2352913342108002163
+      Good_Rat_Tileset_10: -1070482879
       Good_Rat_Tileset_2: 2111400661252339159
       Good_Rat_Tileset_3: 575270550
       Good_Rat_Tileset_4: 1155140335

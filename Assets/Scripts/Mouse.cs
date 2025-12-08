@@ -20,6 +20,16 @@ public class Mouse : MonoBehaviour
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private int squeezeTime = 3;
 
+    private void Start()
+    {
+        Cheese.CheeseActions += PauseInput;
+    }
+
+    private void OnDestroy()
+    {
+        Cheese.CheeseActions -= PauseInput;
+    }
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,7 +42,7 @@ public class Mouse : MonoBehaviour
         inputActions.Player.Squeeze.performed += OnSqueeze;
         inputActions.Player.Squeeze.canceled += OnSqueeze;
 
-        PauseInput();
+        PauseInputForSeconds(1);
     }
 
     private void FixedUpdate()
@@ -72,7 +82,17 @@ public class Mouse : MonoBehaviour
 
     public void PauseInput()
     {
-        StartCoroutine(PausePlayerInput(1));
+        isInputPaused = true;
+    }
+
+    public void UnpauseInput()
+    {
+        isInputPaused = false;
+    }
+
+    public void PauseInputForSeconds(int seconds)
+    {
+        StartCoroutine(PausePlayerInput(seconds));
     }
 
     public void ResetPlayerPosition()

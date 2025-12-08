@@ -296,8 +296,8 @@ MonoBehaviour:
   Light: {fileID: 7854163714166785745, guid: cfc60ec70584e74449dc7f56516fecb6, type: 3}
   Rows: 30
   Columns: 30
-  CellWidth: 5
-  CellHeight: 5
+  CellWidth: 3
+  CellHeight: 3
   AddGaps: 0
   AddTraps: 0
   AddPlayer: 0

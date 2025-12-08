@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CheeseEaten: {fileID: 1624448188, guid: ad219ed043ce4df4b9a536a3222a5a15, type: 3}
   cheeseParticles: {fileID: 1232200068064917745, guid: 8c12092cb66fbad4483822ac1182116f, type: 3}
+  cheeseScoreSound: {fileID: 8300000, guid: b3cd25a7b8732024b90b7b5ba33b05f6, type: 3}
 --- !u!114 &1755583794647566962
 MonoBehaviour:
   m_ObjectHideFlags: 0

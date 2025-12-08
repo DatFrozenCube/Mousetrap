@@ -59,6 +59,7 @@ public class CrossfadeController : MonoBehaviour
         LevelController.DestroyLevel();
         LevelController.LevelActions.Invoke();
         transition.SetTrigger("End");
+        player.UnpauseInput();
     }
 
     IEnumerator FadeScene()

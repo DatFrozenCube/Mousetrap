@@ -1,9 +1,17 @@
+using System.Collections;
 using MoreMountains.Tools;
 using UnityEngine;
 
 public class TrapController : MonoBehaviour
 {
+    public static TrapController Instance;
+
     [SerializeField] private GameObject canvas;
+
+    private void Start()
+    {
+        Instance = this;
+    }
 
     private void Awake()
     {
