@@ -15,6 +15,7 @@ public class Mouse : MonoBehaviour
     private bool isInputPaused;
     private MazeSpawner spawner;
     private Animator animator;
+    private SpriteRenderer mouseSprite;
 
     [SerializeField] private AudioClip squeezeSfx;
     [SerializeField] private float moveSpeed = 10f;
@@ -36,6 +37,8 @@ public class Mouse : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         spawner = GameObject.FindGameObjectWithTag("Creator").GetComponent<MazeSpawner>();
         animator = GetComponentInChildren<Animator>();
+        mouseSprite = GetComponentInChildren<SpriteRenderer>();
+        mouseSprite.material.color = Random.ColorHSV();
 
         inputActions = new InputSystem_Actions();
         inputActions.Player.Enable();
@@ -50,8 +53,29 @@ public class Mouse : MonoBehaviour
         if (!isInputPaused)
         {
             Vector2 inputVector = inputActions.Player.Move.ReadValue<Vector2>();
-            rb.linearVelocityX = inputVector.x * moveSpeed;
-            rb.linearVelocityY = inputVector.y * moveSpeed;
+            float moveSpeedX = inputVector.x * moveSpeed;
+            float moveSpeedY = inputVector.y * moveSpeed;
+
+            rb.linearVelocityX = moveSpeedX;
+            rb.linearVelocityY = moveSpeedY;
+
+            if (Mathf.Abs(moveSpeedX) > 0.1f)
+            {
+                mouseSprite.flipX = moveSpeedX < 0;
+                animator.SetInteger("FrontBackSide", 2);
+                animator.SetFloat("Speed", Mathf.Abs(moveSpeedX));
+            }
+
+            else if (Mathf.Abs(moveSpeedY) > 0.1f)
+            {
+                animator.SetInteger("FrontBackSide", moveSpeedY < 0 ? 0 : 1);
+                animator.SetFloat("Speed", Mathf.Abs(moveSpeedY));
+            }
+
+            else
+            {
+                animator.SetFloat("Speed", 0);
+            }
         }
 
         else

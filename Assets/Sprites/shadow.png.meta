@@ -1,16 +1,25 @@
 fileFormatVersion: 2
-guid: ad219ed043ce4df4b9a536a3222a5a15
+guid: 24a2bd0fa1c547742989ac8614dbc427
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3684756183184973723
-    second: Good_Rat_Tileset_0
+      213: -4756028443593143600
+    second: shadow_0
   - first:
-      213: -2352913342108002163
-    second: Good_Rat_Tileset_1
+      213: -1524956852876221711
+    second: shadow_1
   - first:
-      213: 2111400661252339159
-    second: Good_Rat_Tileset_2
+      213: 5351476090715925925
+    second: shadow_2
+  - first:
+      213: 4983692595894577325
+    second: shadow_3
+  - first:
+      213: 5122144402404105106
+    second: shadow_4
+  - first:
+      213: 6774808859653505523
+    second: shadow_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,11 +128,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Good_Rat_Tileset_0
+      name: shadow_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 0
         width: 16
         height: 16
       alignment: 0
@@ -134,18 +143,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b9f1aa6d932e22330800000000000000
-      internalID: 3684756183184973723
+      spriteID: 0da0afd34513ffdb0800000000000000
+      internalID: -4756028443593143600
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Good_Rat_Tileset_1
+      name: shadow_1
       rect:
         serializedVersion: 2
         x: 16
-        y: 32
+        y: 0
         width: 16
         height: 16
       alignment: 0
@@ -156,18 +165,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d88106818c5c85fd0800000000000000
-      internalID: -2352913342108002163
+      spriteID: 1f2e38662d346dae0800000000000000
+      internalID: -1524956852876221711
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Good_Rat_Tileset_2
+      name: shadow_2
       rect:
         serializedVersion: 2
         x: 32
-        y: 32
+        y: 0
         width: 16
         height: 16
       alignment: 0
@@ -178,84 +187,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7d57878f6b33d4d10800000000000000
-      internalID: 2111400661252339159
+      spriteID: 5ad6e13b623444a40800000000000000
+      internalID: 5351476090715925925
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Good_Rat_Tileset_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 877afe01566bb5e4fa1e8d88865cae71
-      internalID: 575270550
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Good_Rat_Tileset_4
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dfd5457f92500f7468a99284158d9658
-      internalID: 1155140335
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Good_Rat_Tileset_5
-      rect:
-        serializedVersion: 2
-        x: 33
-        y: 17
-        width: 14
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 30e909d0fa8b1e943a58ad5eda697a9d
-      internalID: -12015774
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Good_Rat_Tileset_6
+      name: shadow_3
       rect:
         serializedVersion: 2
         x: 48
-        y: 16
+        y: 0
         width: 16
         height: 16
       alignment: 0
@@ -264,19 +207,63 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: c06615b5862fc394283938352131faef
-      internalID: 1624448188
+      spriteID: da86a00e202a92540800000000000000
+      internalID: 4983692595894577325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Good_Rat_Tileset_7
+      name: shadow_4
       rect:
         serializedVersion: 2
-        x: 0
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29b5d891233851740800000000000000
+      internalID: 5122144402404105106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f101dc63c4f40e50800000000000000
+      internalID: 6774808859653505523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_6
+      rect:
+        serializedVersion: 2
+        x: 96
         y: 0
         width: 16
         height: 16
@@ -288,17 +275,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 388eae83456c24440b4798a9d9640585
-      internalID: 1685141414
+      spriteID: ad39d3a45b6f48f4a82fa784978e225d
+      internalID: -239033788
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Good_Rat_Tileset_8
+      name: shadow_7
       rect:
         serializedVersion: 2
-        x: 16
+        x: 112
         y: 0
         width: 16
         height: 16
@@ -310,52 +297,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11de7387153f49c49a5b3281e73787d9
-      internalID: -1495331249
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Good_Rat_Tileset_9
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: feb436de2a2a33d4886bb2b7ce8afdaf
-      internalID: -705395411
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Good_Rat_Tileset_10
-      rect:
-        serializedVersion: 2
-        x: 68
-        y: 17
-        width: 9
-        height: 13
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b400d260184366c47b2d7a0ec0eccdf6
-      internalID: -1070482879
+      spriteID: 9454f0857753e4d43a5c16c48201e689
+      internalID: 748938765
       vertices: []
       indices: 
       edges: []
@@ -364,7 +307,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 61d8edd47157cd544915270e65f3beb8
+    spriteID: 47bac61d086508e4e86afb9d046763c5
     internalID: 0
     vertices: []
     indices: 
@@ -376,17 +319,14 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Good_Rat_Tileset_0: 3684756183184973723
-      Good_Rat_Tileset_1: -2352913342108002163
-      Good_Rat_Tileset_10: -1070482879
-      Good_Rat_Tileset_2: 2111400661252339159
-      Good_Rat_Tileset_3: 575270550
-      Good_Rat_Tileset_4: 1155140335
-      Good_Rat_Tileset_5: -12015774
-      Good_Rat_Tileset_6: 1624448188
-      Good_Rat_Tileset_7: 1685141414
-      Good_Rat_Tileset_8: -1495331249
-      Good_Rat_Tileset_9: -705395411
+      shadow_0: -4756028443593143600
+      shadow_1: -1524956852876221711
+      shadow_2: 5351476090715925925
+      shadow_3: 4983692595894577325
+      shadow_4: 5122144402404105106
+      shadow_5: 6774808859653505523
+      shadow_6: -239033788
+      shadow_7: 748938765
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

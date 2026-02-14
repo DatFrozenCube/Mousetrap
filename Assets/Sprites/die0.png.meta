@@ -1,16 +1,34 @@
 fileFormatVersion: 2
-guid: ad219ed043ce4df4b9a536a3222a5a15
+guid: 3de548ea631c3504fb7ff3513c12e837
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3684756183184973723
-    second: Good_Rat_Tileset_0
+      213: -6722610639894826120
+    second: die0_0
   - first:
-      213: -2352913342108002163
-    second: Good_Rat_Tileset_1
+      213: -2435171460027242933
+    second: die0_1
   - first:
-      213: 2111400661252339159
-    second: Good_Rat_Tileset_2
+      213: -1458352367119841232
+    second: die0_2
+  - first:
+      213: 1927850352821005102
+    second: die0_3
+  - first:
+      213: -2527774028460148475
+    second: die0_4
+  - first:
+      213: 6165639012617922928
+    second: die0_5
+  - first:
+      213: -5342341195633012547
+    second: die0_6
+  - first:
+      213: 3330894358022143193
+    second: die0_7
+  - first:
+      213: 2250549156714443579
+    second: die0_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,243 +137,199 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Good_Rat_Tileset_0
+      name: die0_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b9f1aa6d932e22330800000000000000
-      internalID: 3684756183184973723
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Good_Rat_Tileset_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d88106818c5c85fd0800000000000000
-      internalID: -2352913342108002163
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Good_Rat_Tileset_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7d57878f6b33d4d10800000000000000
-      internalID: 2111400661252339159
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Good_Rat_Tileset_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 877afe01566bb5e4fa1e8d88865cae71
-      internalID: 575270550
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Good_Rat_Tileset_4
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dfd5457f92500f7468a99284158d9658
-      internalID: 1155140335
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Good_Rat_Tileset_5
-      rect:
-        serializedVersion: 2
-        x: 33
-        y: 17
         width: 14
-        height: 12
+        height: 15
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 30e909d0fa8b1e943a58ad5eda697a9d
-      internalID: -12015774
+      spriteID: 873becdad3d74b2a0800000000000000
+      internalID: -6722610639894826120
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Good_Rat_Tileset_6
+      name: die0_1
       rect:
         serializedVersion: 2
-        x: 48
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c06615b5862fc394283938352131faef
-      internalID: 1624448188
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Good_Rat_Tileset_7
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 388eae83456c24440b4798a9d9640585
-      internalID: 1685141414
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Good_Rat_Tileset_8
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 11de7387153f49c49a5b3281e73787d9
-      internalID: -1495331249
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Good_Rat_Tileset_9
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: feb436de2a2a33d4886bb2b7ce8afdaf
-      internalID: -705395411
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Good_Rat_Tileset_10
-      rect:
-        serializedVersion: 2
-        x: 68
-        y: 17
-        width: 9
+        x: 18
+        y: 33
+        width: 12
         height: 13
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: b400d260184366c47b2d7a0ec0eccdf6
-      internalID: -1070482879
+      spriteID: b4628ed8578843ed0800000000000000
+      internalID: -2435171460027242933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: die0_2
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 35
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 038c870bf34e2cbe0800000000000000
+      internalID: -1458352367119841232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: die0_3
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 16
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2be1048ea911ca10800000000000000
+      internalID: 1927850352821005102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: die0_4
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 17
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 509bc21f9ea8becd0800000000000000
+      internalID: -2527774028460148475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: die0_5
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 18
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 079a168d300c09550800000000000000
+      internalID: 6165639012617922928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: die0_6
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db0db5dccf03cd5b0800000000000000
+      internalID: -5342341195633012547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: die0_7
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dc334255c6b93e20800000000000000
+      internalID: 3330894358022143193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: die0_8
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 2
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b33f48bb88e8b3f10800000000000000
+      internalID: 2250549156714443579
       vertices: []
       indices: 
       edges: []
@@ -364,7 +338,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 61d8edd47157cd544915270e65f3beb8
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -372,21 +346,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      Good_Rat_Tileset_0: 3684756183184973723
-      Good_Rat_Tileset_1: -2352913342108002163
-      Good_Rat_Tileset_10: -1070482879
-      Good_Rat_Tileset_2: 2111400661252339159
-      Good_Rat_Tileset_3: 575270550
-      Good_Rat_Tileset_4: 1155140335
-      Good_Rat_Tileset_5: -12015774
-      Good_Rat_Tileset_6: 1624448188
-      Good_Rat_Tileset_7: 1685141414
-      Good_Rat_Tileset_8: -1495331249
-      Good_Rat_Tileset_9: -705395411
+      die0_0: -6722610639894826120
+      die0_1: -2435171460027242933
+      die0_2: -1458352367119841232
+      die0_3: 1927850352821005102
+      die0_4: -2527774028460148475
+      die0_5: 6165639012617922928
+      die0_6: -5342341195633012547
+      die0_7: 3330894358022143193
+      die0_8: 2250549156714443579
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
