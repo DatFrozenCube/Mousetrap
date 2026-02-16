@@ -38,7 +38,7 @@ public class Mouse : MonoBehaviour
         spawner = GameObject.FindGameObjectWithTag("Creator").GetComponent<MazeSpawner>();
         animator = GetComponentInChildren<Animator>();
         mouseSprite = GetComponentInChildren<SpriteRenderer>();
-        mouseSprite.material.color = Random.ColorHSV();
+        //mouseSprite.material.color = Random.ColorHSV();
 
         inputActions = new InputSystem_Actions();
         inputActions.Player.Enable();

@@ -18,7 +18,6 @@ public class MazeSpawner : MonoBehaviour
     public GameObject Pillar;
     public GameObject Goal;
     public GameObject Trap;
-    public GameObject Floor;
     public GameObject Floorback;
     public GameObject Light;
     public int Rows = 4;
@@ -217,25 +216,11 @@ public class MazeSpawner : MonoBehaviour
             }
         }
 
-        if (Floor != null)
-        {
-            for (int row = 0; row < Rows; row++)
-            {
-                for (int column = 0; column < Columns; column++)
-                {
-                    float x = (column + XOffset) * (CellWidth + (AddGaps ? .2f : 0));
-                    float y = (row + YOffset) * (CellHeight + (AddGaps ? .2f : 0));
-                    GameObject floor = Instantiate(Floor, new Vector3(x, y, 0), Quaternion.identity) as GameObject;
-                    floor.transform.parent = transform;
-                }
-            }
-        }
-
-        if (Floorback != null)
+        if (Floorback != null && AddFloor)
         {
             float squareLength = Vector3.Distance(cornerPillars[0].transform.position, cornerPillars[1].transform.position);
             GameObject floorback = Instantiate(Floorback, new Vector3 (0, 0, 0), Quaternion.identity) as GameObject;
-            floorback.transform.localScale = new Vector3(squareLength, squareLength, 1);
+            floorback.transform.localScale = new Vector3(squareLength*2, squareLength*2, 1);
             floorback.transform.localPosition = middlePillar.transform.localPosition;
             floorback.transform.parent = transform;
         }

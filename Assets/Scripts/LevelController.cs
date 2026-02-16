@@ -27,5 +27,17 @@ public class LevelController : MonoBehaviour
 
         GameObject cheese = GameObject.FindGameObjectWithTag("Cheese");
         Destroy(cheese);
+
+        GameObject[] lights = GameObject.FindGameObjectsWithTag("Light");
+        foreach (var light in lights)
+        {
+            Destroy(light);
+        }
+
+        GameObject[] floorbacks = GameObject.FindGameObjectsWithTag("Floor");
+        foreach (var floorback in floorbacks)
+        {
+            Destroy(floorback);
+        }
     }
 }
