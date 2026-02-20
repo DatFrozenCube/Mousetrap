@@ -13,7 +13,7 @@ public class Mouse : MonoBehaviour
     private PlayerInput playerInput;
     private InputSystem_Actions inputActions;
     private bool isInputPaused;
-    private MazeSpawner spawner;
+    //private MazeSpawner spawner;
     private Animator animator;
     private SpriteRenderer mouseSprite;
 
@@ -35,7 +35,7 @@ public class Mouse : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
-        spawner = GameObject.FindGameObjectWithTag("Creator").GetComponent<MazeSpawner>();
+        //spawner = GameObject.FindGameObjectWithTag("Creator").GetComponent<MazeSpawner>();
         animator = GetComponentInChildren<Animator>();
         mouseSprite = GetComponentInChildren<SpriteRenderer>();
         //mouseSprite.material.color = Random.ColorHSV();
@@ -119,10 +119,12 @@ public class Mouse : MonoBehaviour
         StartCoroutine(PausePlayerInput(seconds));
     }
 
+    /*
     public void ResetPlayerPosition()
     {
         transform.position = new Vector3((spawner.Rows * spawner.CellWidth) / 2, (spawner.Columns * spawner.CellHeight) / 2, 0);
     }
+    */
 
     private IEnumerator PausePlayerInput(int seconds)
     {
