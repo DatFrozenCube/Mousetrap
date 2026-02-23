@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1742331207163503029}
   - component: {fileID: 5975919643214666623}
-  - component: {fileID: -7759564470245382081}
-  - component: {fileID: -4349194122567650192}
+  - component: {fileID: -6778932420754170775}
+  - component: {fileID: -6299150174645672484}
   - component: {fileID: 1755583794647566962}
   m_Layer: 3
   m_Name: Cheese
@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 1249152402451895494}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.43, y: -0.02, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -94,7 +94,22 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!58 &-7759564470245382081
+--- !u!114 &-6778932420754170775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249152402451895494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c653d2a943ab14d9f81485da734900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Cheese
+  CheeseEaten: {fileID: 1624448188, guid: ad219ed043ce4df4b9a536a3222a5a15, type: 3}
+  cheeseParticles: {fileID: 1232200068064917745, guid: 8c12092cb66fbad4483822ac1182116f, type: 3}
+  cheeseScoreSound: {fileID: 8300000, guid: b3cd25a7b8732024b90b7b5ba33b05f6, type: 3}
+--- !u!58 &-6299150174645672484
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,23 +143,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0018192887, y: 0.0043991804}
-  m_Radius: 0.06635561
---- !u!114 &-4349194122567650192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1249152402451895494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45c653d2a943ab14d9f81485da734900, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CheeseEaten: {fileID: 1624448188, guid: ad219ed043ce4df4b9a536a3222a5a15, type: 3}
-  cheeseParticles: {fileID: 1232200068064917745, guid: 8c12092cb66fbad4483822ac1182116f, type: 3}
-  cheeseScoreSound: {fileID: 8300000, guid: b3cd25a7b8732024b90b7b5ba33b05f6, type: 3}
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.4375
 --- !u!114 &1755583794647566962
 MonoBehaviour:
   m_ObjectHideFlags: 0

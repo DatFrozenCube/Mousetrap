@@ -6,11 +6,27 @@ using UnityEngine.Tilemaps;
 
 public class MazeVisualizer : MonoBehaviour
 {
-    [SerializeField]
-    private Tilemap floorTilemap, wallTilemap;
-    [SerializeField]
-    private TileBase floorTile, wallTop, wallSideRight, wallSideLeft, wallBottom, wallFull,
-        wallInnerCornerDownLeft, wallInnerCornerDownRight, wallDiagonalCornerDownRight, wallDiagonalCornerDownLeft, wallDiagonalCornerUpRight, wallDiagonalCornerUpLeft;
+    [Header("Tilemaps")]
+    [SerializeField] private Tilemap floorTilemap;
+    [SerializeField] private Tilemap wallTilemap;
+
+    [Header("Tiles")]
+    [SerializeField] private TileBase floorTile;
+    [SerializeField] private TileBase wallTop;
+    [SerializeField] private TileBase wallSideRight;
+    [SerializeField] private TileBase wallSideLeft;
+    [SerializeField] private TileBase wallBottom;
+    [SerializeField] private TileBase wallFull;
+    [SerializeField] private TileBase wallInnerCornerDownLeft;
+    [SerializeField] private TileBase wallInnerCornerDownRight;
+    [SerializeField] private TileBase wallDiagonalCornerDownRight;
+    [SerializeField] private TileBase wallDiagonalCornerDownLeft;
+    [SerializeField] private TileBase wallDiagonalCornerUpRight;
+    [SerializeField] private TileBase wallDiagonalCornerUpLeft;
+
+    [Header("Objects")]
+    [SerializeField] private Cheese cheesePrefab;
+    [SerializeField] private Mouse player;
 
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions)
     {
@@ -23,6 +39,40 @@ public class MazeVisualizer : MonoBehaviour
         {
             PaintSingleTile(tilemap, tile, position);
         }
+    }
+
+    internal void PlacePlayer(List<Vector2Int> roomCenters)
+    {
+        Vector2Int trySpawn = roomCenters[UnityEngine.Random.Range(0, roomCenters.Count)];
+        Vector3 gridSnap = floorTilemap.GetCellCenterWorld(floorTilemap.LocalToCell((Vector3Int)trySpawn));
+
+        bool isSpawnedInWall = player.SpawnPlayer((Vector2)gridSnap);
+
+        if (isSpawnedInWall)
+        {
+            PlacePlayer(roomCenters);
+        }
+    }
+
+    internal void PlaceCheese(List<Vector2Int> roomCenters)
+    {
+        Vector2Int playerPosition = new Vector2Int(Mathf.RoundToInt(player.GetComponent<Transform>().position.x), Mathf.RoundToInt(player.GetComponent<Transform>().position.y));
+        float greatestDistance = 0f;
+        Vector2Int furthestRoomCenter = Vector2Int.zero;
+
+        foreach (var roomCenter in roomCenters)
+        {
+            float currentDistance = Vector2Int.Distance(playerPosition, roomCenter);
+            if (currentDistance > greatestDistance)
+            {
+                greatestDistance = currentDistance;
+                furthestRoomCenter = roomCenter;
+            }
+        }
+
+        Vector3 gridSnap = floorTilemap.GetCellCenterWorld(floorTilemap.LocalToCell((Vector3Int)furthestRoomCenter));
+
+        Instantiate(cheesePrefab, gridSnap, Quaternion.identity);
     }
 
     internal void PaintSingleBasicWall(Vector2Int position, string binaryType)
@@ -67,6 +117,7 @@ public class MazeVisualizer : MonoBehaviour
     {
         floorTilemap.ClearAllTiles();
         wallTilemap.ClearAllTiles();
+        DestroyImmediate(GameObject.FindGameObjectWithTag("Cheese"));
     }
 
     internal void PaintSingleCornerWall(Vector2Int position, string binaryType)

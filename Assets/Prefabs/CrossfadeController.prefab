@@ -376,6 +376,7 @@ MonoBehaviour:
   transition: {fileID: 2028621962632744202}
   transitionTime: 1
   uiUpdater: {fileID: 4673079651041507862}
+  mazeVisualizer: {fileID: 0}
 --- !u!1 &6605601230458769377
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,6 +556,7 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0

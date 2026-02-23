@@ -85,6 +85,19 @@ public class Mouse : MonoBehaviour
             animator.SetBool("Shrink", false);
         }
     }
+    
+    public bool SpawnPlayer(Vector2 position)
+    {
+        transform.position = position;
+        transform.rotation = Quaternion.identity;
+
+        if (GetComponent<Collider2D>().IsTouchingLayers(LayerMask.GetMask("Wall")))
+        {
+            return true;
+        }
+
+        return false;
+    }
 
     private void OnSqueeze(InputAction.CallbackContext context)
     {

@@ -17,6 +17,7 @@ TagManager:
   - SoundManager
   - Light
   - Floor
+  - MazeGenerator
   layers:
   - Default
   - TransparentFX
@@ -24,8 +25,8 @@ TagManager:
   - Goal
   - Water
   - UI
-  - 
-  - 
+  - Wall
+  - Floor
   - 
   - 
   - 

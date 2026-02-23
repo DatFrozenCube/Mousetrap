@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class CrossfadeController : MonoBehaviour
@@ -9,6 +10,8 @@ public class CrossfadeController : MonoBehaviour
     [SerializeField] private Animator transition;
     [SerializeField] private float transitionTime = 2f;
     [SerializeField] private LevelUIUpdater uiUpdater;
+    [SerializeField] private MazeVisualizer mazeVisualizer;
+    [SerializeField] private RoomFirstMazeGenerator mazeGenerator;
     private Mouse player;
 
     public enum FadeType
@@ -56,8 +59,9 @@ public class CrossfadeController : MonoBehaviour
         uiUpdater.UpdateUI(includeText);
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
-        LevelController.DestroyLevel();
+        mazeVisualizer.Clear();
         LevelController.LevelActions.Invoke();
+        mazeGenerator.GenerateMaze();
         transition.SetTrigger("End");
         player.UnpauseInput();
     }
