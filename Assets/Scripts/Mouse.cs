@@ -7,6 +7,7 @@ public class Mouse : MonoBehaviour
 {
     public float TrapDetectionRadius = 2f;
     public float GoalDetectionRadius = 4f;
+    public float moveSpeed = 10f;
     //Used to detect if there are any traps or goals nearby
 
     private Rigidbody2D rb;
@@ -18,7 +19,6 @@ public class Mouse : MonoBehaviour
     private SpriteRenderer mouseSprite;
 
     [SerializeField] private AudioClip squeezeSfx;
-    [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private int squeezeTime = 3;
 
     private void Start()

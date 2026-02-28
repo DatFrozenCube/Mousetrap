@@ -53,7 +53,7 @@ public class TimeController : MonoBehaviour
 
         else
         {
-            timer = DefaultTime + (int)Mathf.Pow(LevelController.LevelNumber - 2, 2);
+            timer = DefaultTime + (int)Mathf.Pow(LevelController.LevelNumber - 2, 3);
             finishTime = timer;
             StartCoroutine(Countdown());
             Debug.Log("Starting countdown");

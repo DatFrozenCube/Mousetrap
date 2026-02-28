@@ -26,7 +26,19 @@ public class MazeVisualizer : MonoBehaviour
 
     [Header("Objects")]
     [SerializeField] private Cheese cheesePrefab;
+    [SerializeField] private Trap trapPrefab;
+    [SerializeField] private Powerup powerUpPrefab;
     [SerializeField] private Mouse player;
+
+    private enum RoomType
+    {
+        Spawn, Goal, Trap, Powerup
+    }
+
+    public enum ObjectType
+    {
+        Trap, Powerup
+    }
 
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions)
     {
@@ -41,8 +53,9 @@ public class MazeVisualizer : MonoBehaviour
         }
     }
 
-    internal void PlacePlayer(List<Vector2Int> roomCenters)
+    internal void PlacePlayer(Dictionary<Vector2Int, HashSet<Vector2Int>> roomsDictionary)
     {
+        List<Vector2Int> roomCenters = new List<Vector2Int>(roomsDictionary.Keys);
         Vector2Int trySpawn = roomCenters[UnityEngine.Random.Range(0, roomCenters.Count)];
         Vector3 gridSnap = floorTilemap.GetCellCenterWorld(floorTilemap.LocalToCell((Vector3Int)trySpawn));
 
@@ -50,17 +63,22 @@ public class MazeVisualizer : MonoBehaviour
 
         if (isSpawnedInWall)
         {
-            PlacePlayer(roomCenters);
+            PlacePlayer(roomsDictionary);
+        }
+
+        else
+        {
+            RoomTypes.AssignRoomType(trySpawn, RoomTypes.RoomType.Spawn);
         }
     }
 
-    internal void PlaceCheese(List<Vector2Int> roomCenters)
+    internal void PlaceCheese(Dictionary<Vector2Int, HashSet<Vector2Int>> roomsDictionary)
     {
         Vector2Int playerPosition = new Vector2Int(Mathf.RoundToInt(player.GetComponent<Transform>().position.x), Mathf.RoundToInt(player.GetComponent<Transform>().position.y));
         float greatestDistance = 0f;
         Vector2Int furthestRoomCenter = Vector2Int.zero;
 
-        foreach (var roomCenter in roomCenters)
+        foreach (var roomCenter in roomsDictionary.Keys)
         {
             float currentDistance = Vector2Int.Distance(playerPosition, roomCenter);
             if (currentDistance > greatestDistance)
@@ -73,6 +91,60 @@ public class MazeVisualizer : MonoBehaviour
         Vector3 gridSnap = floorTilemap.GetCellCenterWorld(floorTilemap.LocalToCell((Vector3Int)furthestRoomCenter));
 
         Instantiate(cheesePrefab, gridSnap, Quaternion.identity);
+        RoomTypes.AssignRoomType(furthestRoomCenter, RoomTypes.RoomType.Goal);
+    }
+
+    internal void PlaceObjects(Dictionary<Vector2Int, HashSet<Vector2Int>> roomsDictionary, ObjectPlacementHelper.PlacementType placementType, ObjectType objectType, int minObjects, int maxObjects)
+    {
+        foreach (var roomCenter in roomsDictionary.Keys)
+        {
+            ObjectPlacementHelper helper = new ObjectPlacementHelper(roomsDictionary[roomCenter]);
+            int objectsToPlace = UnityEngine.Random.Range(minObjects, maxObjects + 1);
+
+            if (helper.roomTileByType.ContainsKey(placementType))
+            {
+                if (objectsToPlace > helper.roomTileByType[placementType].Count)
+                {
+                    objectsToPlace = helper.roomTileByType[placementType].Count;
+                }
+            }
+
+            int totalObjectsPlaced = 0;
+            List<Vector2Int> objectLocations = new List<Vector2Int>();
+
+            while (totalObjectsPlaced < objectsToPlace)
+            {
+                Vector2Int objectPosition = helper.GetObjectPlacement(placementType);
+
+                //Go to the next room if there are no valid trap positions in the current room
+                if (objectPosition == Vector2Int.zero)
+                {
+                    break;
+                }
+
+                objectLocations.Add(objectPosition);
+                totalObjectsPlaced++;
+            }
+
+            if (RoomTypes.roomTypesDictionary[roomCenter] == RoomTypes.RoomType.Trap && objectType == ObjectType.Trap)
+            {
+                ForEachObject(trapPrefab.gameObject, objectLocations);
+            }
+
+            else if (RoomTypes.roomTypesDictionary[roomCenter] == RoomTypes.RoomType.Powerup && objectType == ObjectType.Powerup)
+            {
+                ForEachObject(powerUpPrefab.gameObject, objectLocations);
+            }
+        }
+    }
+
+    private void ForEachObject(GameObject prefab, List<Vector2Int> objectLocations)
+    {
+        foreach (var objectLocation in objectLocations)
+        {
+            Vector3 gridSnap = floorTilemap.GetCellCenterWorld(floorTilemap.LocalToCell((Vector3Int)objectLocation));
+            Instantiate(prefab, gridSnap, Quaternion.identity);
+        }
     }
 
     internal void PaintSingleBasicWall(Vector2Int position, string binaryType)
@@ -118,6 +190,14 @@ public class MazeVisualizer : MonoBehaviour
         floorTilemap.ClearAllTiles();
         wallTilemap.ClearAllTiles();
         DestroyImmediate(GameObject.FindGameObjectWithTag("Cheese"));
+        foreach (var trap in GameObject.FindGameObjectsWithTag("Trap"))
+        {
+            DestroyImmediate(trap);
+        }
+        foreach (var powerUp in GameObject.FindGameObjectsWithTag("Powerup"))
+        {
+            DestroyImmediate(powerUp);
+        }
     }
 
     internal void PaintSingleCornerWall(Vector2Int position, string binaryType)

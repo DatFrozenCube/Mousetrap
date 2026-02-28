@@ -8,6 +8,8 @@ public class RoomFirstMazeGenerator : SimpleRandomWalkMazeGenerator
     [SerializeField] private int minRoomWidth = 4, minRoomHeight = 4;
     [SerializeField] private int mazeWidth = 20, mazeHeight = 20;
     [SerializeField][Range(0, 10)] private int offset = 1;
+    [SerializeField] private int minTrapsPerRoom = 5, maxTrapsPerRoom = 10;
+    [SerializeField] private int minPowerUpsPerRoom = 1, maxPowerUpsPerRoom = 3;
     [SerializeField] private bool randomWalkRooms = true;
     [SerializeField] private bool enableFloorGizmos = false;
 
@@ -16,18 +18,26 @@ public class RoomFirstMazeGenerator : SimpleRandomWalkMazeGenerator
     private List<Vector2Int> roomCenters = new List<Vector2Int>();
     private HashSet<Vector2Int> floorPositions, corridorPositions, mapPositions;
 
+    private void Awake()
+    {
+        LevelController.LevelActions += MazeNextLevel;
+    }
+
+    private void OnDestroy()
+    {
+        LevelController.LevelActions -= MazeNextLevel;
+    }
+
     protected override void RunProceduralGeneration()
     {
         CreateRooms();
     }
 
-    public void MazeNextLevel()
+    private void MazeNextLevel()
     {
-        if (LevelController.LevelNumber % 2 == 0)
-        {
-            mazeWidth += 5;
-            mazeHeight += 5;
-        }
+        mazeWidth += 5;
+        mazeHeight += 5;
+        Debug.Log($"Increased maze size to {mazeWidth}x{mazeHeight}");
     }
 
     private void CreateRooms()
@@ -35,6 +45,7 @@ public class RoomFirstMazeGenerator : SimpleRandomWalkMazeGenerator
         var roomsList = MazeGenerationAlgorithms.BinarySpacePartitioning(new BoundsInt((Vector3Int)startPosition, new Vector3Int(mazeWidth, mazeHeight, 0)), minRoomWidth, minRoomHeight);
         HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
         ClearRoomData();
+        RoomTypes.ClearRoomTypes();
 
         if (randomWalkRooms)
         {
@@ -56,7 +67,11 @@ public class RoomFirstMazeGenerator : SimpleRandomWalkMazeGenerator
 
         mazeVisualizer.PaintFloorTiles(mapPositions);
         WallGenerator.CreateWalls(mapPositions, mazeVisualizer);
-        ObjectGenerator.CreateObjects(roomCenters, mazeVisualizer);
+        mazeVisualizer.PlacePlayer(roomsDictionary);
+        mazeVisualizer.PlaceCheese(roomsDictionary);
+        RoomTypes.AssignRandomRoomTypes(roomsDictionary);
+        mazeVisualizer.PlaceObjects(roomsDictionary, ObjectPlacementHelper.PlacementType.OpenSpace, MazeVisualizer.ObjectType.Trap, minTrapsPerRoom, maxTrapsPerRoom);
+        mazeVisualizer.PlaceObjects(roomsDictionary, ObjectPlacementHelper.PlacementType.OpenSpace, MazeVisualizer.ObjectType.Powerup, minPowerUpsPerRoom, maxPowerUpsPerRoom);
     }
 
     private void ClearRoomData()
