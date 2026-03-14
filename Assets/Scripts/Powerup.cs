@@ -1,3 +1,4 @@
+using System.Data;
 using UnityEngine;
 
 public class Powerup : MonoBehaviour
@@ -19,9 +20,10 @@ public class Powerup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.gameObject.tag == "Player" || collision.transform.parent.gameObject.CompareTag("Player"))
         {
             ApplyPowerUp(collision.GetComponent<Mouse>());
+            Destroy(gameObject);
         }
     }
 }

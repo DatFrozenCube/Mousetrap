@@ -10,6 +10,7 @@ public class RoomFirstMazeGenerator : SimpleRandomWalkMazeGenerator
     [SerializeField][Range(0, 10)] private int offset = 1;
     [SerializeField] private int minTrapsPerRoom = 5, maxTrapsPerRoom = 10;
     [SerializeField] private int minPowerUpsPerRoom = 1, maxPowerUpsPerRoom = 3;
+    [SerializeField] private int minLightsPerRoom = 1, maxLightsPerRoom = 3;
     [SerializeField] private bool randomWalkRooms = true;
     [SerializeField] private bool enableFloorGizmos = false;
 
@@ -72,6 +73,7 @@ public class RoomFirstMazeGenerator : SimpleRandomWalkMazeGenerator
         RoomTypes.AssignRandomRoomTypes(roomsDictionary);
         mazeVisualizer.PlaceObjects(roomsDictionary, ObjectPlacementHelper.PlacementType.OpenSpace, MazeVisualizer.ObjectType.Trap, minTrapsPerRoom, maxTrapsPerRoom);
         mazeVisualizer.PlaceObjects(roomsDictionary, ObjectPlacementHelper.PlacementType.OpenSpace, MazeVisualizer.ObjectType.Powerup, minPowerUpsPerRoom, maxPowerUpsPerRoom);
+        mazeVisualizer.PlaceObjects(roomsDictionary, ObjectPlacementHelper.PlacementType.NearWall, MazeVisualizer.ObjectType.Light, minLightsPerRoom, maxLightsPerRoom);
     }
 
     private void ClearRoomData()

@@ -1,5 +1,7 @@
 using System.Collections;
+using MoreMountains.Feedbacks;
 using MoreMountains.Tools;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,6 +19,9 @@ public class Mouse : MonoBehaviour
     //private MazeSpawner spawner;
     private Animator animator;
     private SpriteRenderer mouseSprite;
+    private Health health;
+    private CinemachineImpulseSource impulseSource;
+    private MMF_Player mmfPlayer;
 
     [SerializeField] private AudioClip squeezeSfx;
     [SerializeField] private int squeezeTime = 3;
@@ -38,6 +43,9 @@ public class Mouse : MonoBehaviour
         //spawner = GameObject.FindGameObjectWithTag("Creator").GetComponent<MazeSpawner>();
         animator = GetComponentInChildren<Animator>();
         mouseSprite = GetComponentInChildren<SpriteRenderer>();
+        health = GetComponent<Health>();
+        impulseSource = GetComponent<CinemachineImpulseSource>();
+        mmfPlayer = GetComponent<MMF_Player>();
         //mouseSprite.material.color = Random.ColorHSV();
 
         inputActions = new InputSystem_Actions();

@@ -6,7 +6,7 @@ using UnityEngine;
 public class TimeController : MonoBehaviour
 {
     public static TimeController Instance;
-
+    public bool includeTime = false;
     public int DefaultTime = 60;
 
     private int finishTime = 0;
@@ -23,16 +23,21 @@ public class TimeController : MonoBehaviour
     private void Start()
     {
         Instance = this;
-
-        LevelController.LevelActions += ResetTime;
-        Cheese.CheeseActions += StopTime;
-        ResetTime();
+        if (includeTime)
+        {
+            LevelController.LevelActions += ResetTime;
+            Cheese.CheeseActions += StopTime;
+            ResetTime();
+        }
     }
 
     private void OnDestroy()
     {
-        LevelController.LevelActions -= ResetTime;
-        Cheese.CheeseActions -= StopTime;
+        if (includeTime)
+        {
+            LevelController.LevelActions -= ResetTime;
+            Cheese.CheeseActions -= StopTime;
+        }
     }
 
     private void StopTime()

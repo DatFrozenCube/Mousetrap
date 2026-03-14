@@ -28,6 +28,7 @@ public class MazeVisualizer : MonoBehaviour
     [SerializeField] private Cheese cheesePrefab;
     [SerializeField] private Trap trapPrefab;
     [SerializeField] private Powerup powerUpPrefab;
+    [SerializeField] private GameObject lightPrefab;
     [SerializeField] private Mouse player;
 
     private enum RoomType
@@ -37,7 +38,7 @@ public class MazeVisualizer : MonoBehaviour
 
     public enum ObjectType
     {
-        Trap, Powerup
+        Trap, Powerup, Light
     }
 
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions)
@@ -135,6 +136,11 @@ public class MazeVisualizer : MonoBehaviour
             {
                 ForEachObject(powerUpPrefab.gameObject, objectLocations);
             }
+
+            else if (objectType == ObjectType.Light)
+            {
+                ForEachObject(lightPrefab, objectLocations);
+            }
         }
     }
 
@@ -197,6 +203,10 @@ public class MazeVisualizer : MonoBehaviour
         foreach (var powerUp in GameObject.FindGameObjectsWithTag("Powerup"))
         {
             DestroyImmediate(powerUp);
+        }
+        foreach(var light in GameObject.FindGameObjectsWithTag("Light"))
+        {
+            DestroyImmediate(light);
         }
     }
 
