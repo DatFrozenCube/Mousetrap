@@ -1,15 +1,14 @@
-using UnityEditor.Rendering;
 using System;
 using UnityEngine;
 using MoreMountains.Feedbacks;
 using NUnit.Framework;
 using System.Collections.Generic;
+using TMPro;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
-    [SerializeField] private MMF_Feedback[] damageFeedbacks;
-    [SerializeField] private MMF_Feedback[] healFeedbacks;
+    [SerializeField] private TMP_Text healthText;
     private float currentHealth;
     private float healthPercentage;
     private MMF_Player mmfPlayer;
@@ -30,16 +29,21 @@ public class Health : MonoBehaviour
     {
         currentHealth -= damage;
         currentHealth = Mathf.Max(currentHealth, 0);
-        healthPercentage = currentHealth / maxHealth;
+        healthPercentage = (currentHealth / maxHealth) * 100;
 
         if (mmfPlayer != null && playFeedbacks)
         {
-            foreach (var feedback in damageFeedbacks)
-            {
-                mmfPlayer.AddFeedback(feedback);
-            }
             mmfPlayer.PlayFeedbacks();
-            mmfPlayer.FeedbacksList.Clear();
+        }
+
+        if (healthPercentage > 0)
+        {
+            healthText.text = $"{healthPercentage}%";
+        }
+
+        else
+        {
+            TrapController.Instance.GameOver();
         }
     }
 
@@ -47,16 +51,13 @@ public class Health : MonoBehaviour
     {
         currentHealth += healAmount;
         currentHealth = Mathf.Min(currentHealth, maxHealth);
-        healthPercentage = currentHealth / maxHealth;
+        healthPercentage = (currentHealth / maxHealth) * 100;
 
         if (mmfPlayer != null && playFeedbacks) 
         {
-            foreach (var feedback in healFeedbacks)
-            {
-                mmfPlayer.AddFeedback(feedback);
-            }
             mmfPlayer.PlayFeedbacks();
-            mmfPlayer.FeedbacksList.Clear();
         }
+
+        healthText.text = $"{healthPercentage}%";
     }
 }

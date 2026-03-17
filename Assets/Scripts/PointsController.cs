@@ -57,9 +57,14 @@ public class PointsController : MonoBehaviour
         soundManager.PlaySound(sound, volume: 0.25f, mmSoundManagerTrack: MMSoundManager.MMSoundManagerTracks.Sfx, location: Camera.main.transform.position);
     }
 
+    public void ScorePointsAnimated(int points)
+    {
+        StartCoroutine(PointsAnimationTimed(pointWaitTime, pointEndTime, points / 10));
+    }
+
     private void ScoreFinishLevelPointsTimed()
     {
-        StartCoroutine(PointsAnimationTimed(pointWaitTime, pointEndTime));
+        StartCoroutine(PointsAnimationTimed(pointWaitTime, pointEndTime, TimeController.Instance.GetFinishTime(), true));
     }
 
     private void ScoreFinishLevelPoints()
@@ -67,9 +72,8 @@ public class PointsController : MonoBehaviour
         StartCoroutine(PointsAnimation(pointEndTime));
     }
 
-    private IEnumerator PointsAnimationTimed(float waitTime, float endTime)
+    private IEnumerator PointsAnimationTimed(float waitTime, float endTime, int finishTime, bool endLevel = false)
     {
-        int finishTime = TimeController.Instance.GetFinishTime();
         while (pointAddCounter < finishTime)
         {
             yield return new WaitForSeconds(waitTime);
@@ -83,7 +87,11 @@ public class PointsController : MonoBehaviour
         yield return new WaitForSeconds(endTime);
         soundManager.PlaySound(pointsComplete, volume: 0.25f, mmSoundManagerTrack: MMSoundManager.MMSoundManagerTracks.Sfx, location: Camera.main.transform.position);
         pointAddCounter = 0;
-        CrossfadeController.Instance.Fade(CrossfadeController.FadeType.Level);
+
+        if (endLevel)
+        {
+            CrossfadeController.Instance.Fade(CrossfadeController.FadeType.Level);
+        }
     }
 
     private IEnumerator PointsAnimation(float endTime)

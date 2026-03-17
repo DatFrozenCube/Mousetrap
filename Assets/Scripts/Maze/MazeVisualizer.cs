@@ -29,6 +29,7 @@ public class MazeVisualizer : MonoBehaviour
     [SerializeField] private Trap trapPrefab;
     [SerializeField] private Powerup powerUpPrefab;
     [SerializeField] private GameObject lightPrefab;
+    [SerializeField] private Gem gemPrefab;
     [SerializeField] private Mouse player;
 
     private enum RoomType
@@ -38,7 +39,7 @@ public class MazeVisualizer : MonoBehaviour
 
     public enum ObjectType
     {
-        Trap, Powerup, Light
+        Trap, Powerup, Light, Gem
     }
 
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions)
@@ -141,6 +142,11 @@ public class MazeVisualizer : MonoBehaviour
             {
                 ForEachObject(lightPrefab, objectLocations);
             }
+
+            else if (objectType == ObjectType.Gem)
+            {
+                ForEachObject(gemPrefab.gameObject, objectLocations);
+            }
         }
     }
 
@@ -207,6 +213,10 @@ public class MazeVisualizer : MonoBehaviour
         foreach(var light in GameObject.FindGameObjectsWithTag("Light"))
         {
             DestroyImmediate(light);
+        }
+        foreach(var gem in GameObject.FindGameObjectsWithTag("Gem"))
+        {
+            DestroyImmediate(gem);
         }
     }
 
