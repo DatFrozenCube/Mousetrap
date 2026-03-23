@@ -12,6 +12,7 @@ public class Gem : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") || collision.transform.parent.gameObject.CompareTag("Player"))
         {
             PointsController.Instance.ScorePointsAnimated(points);
+            MoneyController.Instance.AddMoney(money);
             gameObject.GetComponent<MMF_Player>().PlayFeedbacks();
         }
     }

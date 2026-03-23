@@ -50,8 +50,10 @@ public class Mouse : MonoBehaviour
 
         inputActions = new InputSystem_Actions();
         inputActions.Player.Enable();
-        inputActions.Player.Squeeze.performed += OnSqueeze;
-        inputActions.Player.Squeeze.canceled += OnSqueeze;
+        inputActions.Player.Shop.performed += Shop;
+        inputActions.Player.Shop.canceled += Shop;
+        //inputActions.Player.Squeeze.performed += OnSqueeze;
+        //inputActions.Player.Squeeze.canceled += OnSqueeze;
 
         PauseInputForSeconds(1);
     }
@@ -105,6 +107,17 @@ public class Mouse : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void Shop(InputAction.CallbackContext context)
+    {
+        if (!isInputPaused)
+        {
+            if (context.performed)
+            {
+                ShopManager.Instance.ToggleShop();
+            }
+        }
     }
 
     private void OnSqueeze(InputAction.CallbackContext context)

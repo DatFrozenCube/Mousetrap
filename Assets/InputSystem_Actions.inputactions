@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "InputSystem_Actions",
     "maps": [
         {
@@ -15,9 +16,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Squeeze",
+                    "name": "Shop",
                     "type": "Button",
-                    "id": "5f741c58-2ee1-46a9-9e42-bcef66cb8b9d",
+                    "id": "88f13ce9-9497-4640-8956-265c1d85c05e",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -159,12 +160,23 @@
                 },
                 {
                     "name": "",
-                    "id": "9039624e-df7c-413d-84ed-ca24cdc3bfdb",
-                    "path": "<Keyboard>/space",
+                    "id": "b62ddd54-63cb-474c-b041-7bec656c310d",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Squeeze",
+                    "groups": ";Gamepad",
+                    "action": "Shop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b168b5e3-22a3-403a-be0c-32ffe79cb675",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Shop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

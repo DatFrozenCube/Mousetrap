@@ -102,9 +102,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Squeeze"",
+                    ""name"": ""Shop"",
                     ""type"": ""Button"",
-                    ""id"": ""5f741c58-2ee1-46a9-9e42-bcef66cb8b9d"",
+                    ""id"": ""88f13ce9-9497-4640-8956-265c1d85c05e"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -246,12 +246,23 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""9039624e-df7c-413d-84ed-ca24cdc3bfdb"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""id"": ""b62ddd54-63cb-474c-b041-7bec656c310d"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Squeeze"",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Shop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b168b5e3-22a3-403a-be0c-32ffe79cb675"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Shop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -840,7 +851,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Squeeze = m_Player.FindAction("Squeeze", throwIfNotFound: true);
+        m_Player_Shop = m_Player.FindAction("Shop", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -935,7 +946,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Squeeze;
+    private readonly InputAction m_Player_Shop;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -952,9 +963,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Move => m_Wrapper.m_Player_Move;
         /// <summary>
-        /// Provides access to the underlying input action "Player/Squeeze".
+        /// Provides access to the underlying input action "Player/Shop".
         /// </summary>
-        public InputAction @Squeeze => m_Wrapper.m_Player_Squeeze;
+        public InputAction @Shop => m_Wrapper.m_Player_Shop;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -984,9 +995,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
-            @Squeeze.started += instance.OnSqueeze;
-            @Squeeze.performed += instance.OnSqueeze;
-            @Squeeze.canceled += instance.OnSqueeze;
+            @Shop.started += instance.OnShop;
+            @Shop.performed += instance.OnShop;
+            @Shop.canceled += instance.OnShop;
         }
 
         /// <summary>
@@ -1001,9 +1012,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
-            @Squeeze.started -= instance.OnSqueeze;
-            @Squeeze.performed -= instance.OnSqueeze;
-            @Squeeze.canceled -= instance.OnSqueeze;
+            @Shop.started -= instance.OnShop;
+            @Shop.performed -= instance.OnShop;
+            @Shop.canceled -= instance.OnShop;
         }
 
         /// <summary>
@@ -1312,12 +1323,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMove(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Squeeze" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Shop" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnSqueeze(InputAction.CallbackContext context);
+        void OnShop(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
