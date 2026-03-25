@@ -21,12 +21,12 @@ public class ShopManager : MonoBehaviour
         if (isShopOpen)
         {
             shopUI.SetActive(true);
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
         }
         else
         {
             shopUI.SetActive(false);
-            Time.timeScale = 1f;
+            //Time.timeScale = 1f;
         }
     }
 }
