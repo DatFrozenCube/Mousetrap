@@ -4,11 +4,14 @@ using MoreMountains.Feedbacks;
 using NUnit.Framework;
 using System.Collections.Generic;
 using TMPro;
+using EasyTextEffects;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private TMP_Text healthText;
+    [SerializeField] private Image animatedHeart;
     private float currentHealth;
     private float healthPercentage;
     private MMF_Player mmfPlayer;
@@ -22,6 +25,35 @@ public class Health : MonoBehaviour
         if (mmfPlayer != null )
         {
             mmfPlayer = gameObject.GetComponentInChildren<MMF_Player>();
+        }
+
+        PauseManager.pauseActions += healthText.gameObject.GetComponent<TextEffect>().StopAllEffects;
+        PauseManager.pauseActions += ToggleOffHeartAnimation;
+        PauseManager.resumeActions += healthText.gameObject.GetComponent<TextEffect>().StartOnStartEffects;
+        PauseManager.resumeActions += ToggleOnHeartAnimation;
+    }
+
+    private void OnDestroy()
+    {
+        PauseManager.pauseActions -= healthText.gameObject.GetComponent<TextEffect>().StopAllEffects;
+        PauseManager.resumeActions -= healthText.gameObject.GetComponent<TextEffect>().StartOnStartEffects;
+        PauseManager.pauseActions -= ToggleOffHeartAnimation;
+        PauseManager.resumeActions -= ToggleOnHeartAnimation;
+    }
+
+    private void ToggleOnHeartAnimation()
+    {
+        if (animatedHeart != null)
+        {
+            animatedHeart.material.SetInteger("_Animate", 1);
+        }
+    }
+
+    private void ToggleOffHeartAnimation()
+    {
+        if (animatedHeart != null)
+        {
+            animatedHeart.material.SetInteger("_Animate", 0);
         }
     }
 

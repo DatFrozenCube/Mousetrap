@@ -36,6 +36,9 @@ public class PointsController : MonoBehaviour
         {
             Cheese.CheeseActions += ScoreFinishLevelPoints;
         }
+
+        PauseManager.pauseActions += pointsTextEffect.StopAllEffects;
+        PauseManager.resumeActions += pointsTextEffect.StartOnStartEffects;
     }
 
     private void OnDestroy()
@@ -49,6 +52,9 @@ public class PointsController : MonoBehaviour
         {
             Cheese.CheeseActions -= ScoreFinishLevelPoints;
         }
+
+        PauseManager.pauseActions -= pointsTextEffect.StopAllEffects;
+        PauseManager.resumeActions -= pointsTextEffect.StartOnStartEffects;
     }
 
     public void ScorePoints(int points, AudioClip sound)

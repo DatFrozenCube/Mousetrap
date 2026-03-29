@@ -21,11 +21,13 @@ public class ShopManager : MonoBehaviour
         if (isShopOpen)
         {
             shopUI.SetActive(true);
+            PauseManager.PauseGame();
             //Time.timeScale = 0f;
         }
         else
         {
             shopUI.SetActive(false);
+            PauseManager.ResumeGame();
             //Time.timeScale = 1f;
         }
     }

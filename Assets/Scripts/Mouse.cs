@@ -29,11 +29,15 @@ public class Mouse : MonoBehaviour
     private void Start()
     {
         Cheese.CheeseActions += PauseInput;
+        PauseManager.pauseActions += PauseInput;
+        PauseManager.resumeActions += UnpauseInput;
     }
 
     private void OnDestroy()
     {
         Cheese.CheeseActions -= PauseInput;
+        PauseManager.pauseActions -= PauseInput;
+        PauseManager.resumeActions -= UnpauseInput;
     }
 
     private void Awake()
@@ -111,7 +115,7 @@ public class Mouse : MonoBehaviour
 
     private void Shop(InputAction.CallbackContext context)
     {
-        if (!isInputPaused)
+        if (PauseManager.pauseAvailable)
         {
             if (context.performed)
             {
@@ -141,11 +145,15 @@ public class Mouse : MonoBehaviour
     public void PauseInput()
     {
         isInputPaused = true;
+        GetComponent<Collider2D>().enabled = false;
+        GetComponentInChildren<Animator>().StartPlayback();
     }
 
     public void UnpauseInput()
     {
         isInputPaused = false;
+        GetComponent<Collider2D>().enabled = true;
+        GetComponentInChildren<Animator>().StopPlayback();
     }
 
     public void PauseInputForSeconds(int seconds)

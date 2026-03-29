@@ -36,6 +36,7 @@ public class Cheese : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         PointsController.Instance.ScorePoints(100, cheeseScoreSound);
 
+        PauseManager.pauseAvailable = false;
         CheeseActions.Invoke();
 
         if (!BasicSettings.Instance.IsParticlesOn)

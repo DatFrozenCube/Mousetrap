@@ -64,6 +64,7 @@ public class CrossfadeController : MonoBehaviour
         mazeGenerator.GenerateMaze();
         transition.SetTrigger("End");
         player.UnpauseInput();
+        PauseManager.pauseAvailable = true;
     }
 
     IEnumerator FadeScene()

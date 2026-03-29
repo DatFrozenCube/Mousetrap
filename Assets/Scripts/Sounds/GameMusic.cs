@@ -11,13 +11,13 @@ public class GameMusic : MonoBehaviour
 
         if (musicManager != null)
         {
-            Music.Instance.PlayGameMusic();
+            //Music.Instance.PlayGameMusic();
         }
 
         else
         {
             Instantiate(soundManagerPrefab);
-            Music.Instance.PlayGameMusic();
+            //Music.Instance.PlayGameMusic();
         }
     }
 }
