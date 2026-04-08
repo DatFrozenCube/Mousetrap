@@ -11,6 +11,12 @@ public class Gem : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") || collision.transform.parent.gameObject.CompareTag("Player"))
         {
+            if (MoneyController.Instance.GetMoney() >= MoneyController.Instance.GetCapacity())
+            {
+                MoneyController.Instance.WarnPlayer(2f, 0.5f);
+                return;
+            }
+
             PointsController.Instance.ScorePointsAnimated(points);
             MoneyController.Instance.AddMoney(money);
             gameObject.GetComponent<MMF_Player>().PlayFeedbacks();

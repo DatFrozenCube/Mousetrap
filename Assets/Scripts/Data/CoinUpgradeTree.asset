@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd897658f3c3b3846a8da9b4b3e6b56a, type: 3}
+  m_Name: CoinUpgradeTree
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeTreeSO
+  upgrades:
+  - {fileID: 11400000, guid: 46325c33d166b4d478ff0dd472831252, type: 2}
+  - {fileID: 11400000, guid: 55c29d421fda123408c8350230882bf5, type: 2}

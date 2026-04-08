@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private float maxHealth = 100f;
     [SerializeField] private TMP_Text healthText;
     [SerializeField] private Image animatedHeart;
     private float currentHealth;
@@ -91,5 +91,21 @@ public class Health : MonoBehaviour
         }
 
         healthText.text = $"{healthPercentage}%";
+    }
+
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public void SetMaxHealth(float newMaxHealth)
+    {
+        maxHealth = newMaxHealth;
+        Heal(newMaxHealth, false);
+    }
+
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
     }
 }

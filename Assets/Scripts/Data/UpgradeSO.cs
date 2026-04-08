@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Upgrade", menuName = "Mousetrap/Data")]
+[CreateAssetMenu(fileName = "Upgrade", menuName = "Mousetrap/Data/Upgrade")]
 public class UpgradeSO : ScriptableObject
 {
     public string upgradeName;
