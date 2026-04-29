@@ -4,4 +4,5 @@ using UnityEngine;
 public class UpgradeTreeSO : ScriptableObject
 {
     public UpgradeSO[] upgrades;
+    public int currentUpgradeIndex = 0;
 }

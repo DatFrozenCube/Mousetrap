@@ -81,13 +81,14 @@ public class MoneyController : MonoBehaviour
         return money;
     }
 
-    public void WarnPlayer(float duration, float fadeDuration)
+    public void WarnPlayer(string text, float duration, float fadeDuration)
     {
-        StartCoroutine(FadeWarning(duration, fadeDuration));
+        StartCoroutine(FadeWarning(text, duration, fadeDuration));
     }
 
-    public IEnumerator FadeWarning(float duration, float fadeDuration)
+    public IEnumerator FadeWarning(string text, float duration, float fadeDuration)
     {
+        warningText.text = text;
         warningText.alpha = 0f;
         warningText.gameObject.SetActive(true);
         

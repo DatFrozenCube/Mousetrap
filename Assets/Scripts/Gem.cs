@@ -13,11 +13,11 @@ public class Gem : MonoBehaviour
         {
             if (MoneyController.Instance.GetMoney() >= MoneyController.Instance.GetCapacity())
             {
-                MoneyController.Instance.WarnPlayer(2f, 0.5f);
+                MoneyController.Instance.WarnPlayer("Coin capacity at limit!", 2f, 0.5f);
                 return;
             }
 
-            PointsController.Instance.ScorePointsAnimated(points);
+            PointsController.Instance.ScorePointsAnimated(Mathf.CeilToInt(points * PointsController.Instance.PointsMultiplier));
             MoneyController.Instance.AddMoney(money);
             gameObject.GetComponent<MMF_Player>().PlayFeedbacks();
         }

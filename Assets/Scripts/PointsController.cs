@@ -9,7 +9,8 @@ public class PointsController : MonoBehaviour
 {
     public static PointsController Instance;
     public int Points;
-    public bool finishedPointCalc = false;
+    public float PointsMultiplier = 1f;
+    public bool FinishedPointCalc = false;
 
     [SerializeField] private float pointWaitTime = 0.02f;
     [SerializeField] private float pointEndTime = 0.2f;

@@ -29,6 +29,11 @@ public class UpgradeController : MonoBehaviour
                 MoneyController.Instance.MultiplyCapacity(2);
                 MoneyController.Instance.SubtractMoney(upgrade.upgradeCost);
                 break;
+
+            case UpgradeSO.UpgradeType.PointsMultiplier:
+                PointsController.Instance.PointsMultiplier *= pointsUpgradeMultiplier;
+                MoneyController.Instance.SubtractMoney(upgrade.upgradeCost);
+                break;
         }
     }
 }

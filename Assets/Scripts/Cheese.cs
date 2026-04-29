@@ -34,7 +34,7 @@ public class Cheese : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().sprite = CheeseEaten;
         GetComponent<Collider2D>().enabled = false;
-        PointsController.Instance.ScorePoints(100, cheeseScoreSound);
+        PointsController.Instance.ScorePoints(Mathf.CeilToInt(100 * PointsController.Instance.PointsMultiplier), cheeseScoreSound);
 
         PauseManager.pauseAvailable = false;
         CheeseActions.Invoke();
